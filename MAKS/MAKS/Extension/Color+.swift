@@ -9,11 +9,12 @@ import SwiftUI
 
 extension Color {
     
-    static let mkMainColor: Color = .init(hex: 0x410ED3)
-    static let mkSubColor: Color = .init(hex: 0x1E1F23)
+    static let mkMainColor: Color = .init(hex: 0x1E1F23)
+    static let mkSubColor: Color = .init(hex: 0x303236)
     
     static let mkPointColor: Color = .init(hex: 0xFF6924)
     
+    /// 숫자값이 커질수록 진한 색입니다.
     static let mkGray700: Color = .init(hex: 0x303236)
     static let mkGray600: Color = .init(hex: 0x4B4D53)
     static let mkGray500: Color = .init(hex: 0x6E7178)

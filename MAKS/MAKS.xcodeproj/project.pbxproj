@@ -12,6 +12,10 @@
 		FD9290602A9D1EEA00A41A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */; };
 		FD9290632A9D1EEA00A41A6B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9290622A9D1EEA00A41A6B /* Preview Assets.xcassets */; };
 		FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92906E2A9D50B500A41A6B /* Color+.swift */; };
+		FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290752A9E3ACB00A41A6B /* MKButton.swift */; };
+		FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290772A9E421900A41A6B /* MKSearchBar.swift */; };
+		FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290792A9E461F00A41A6B /* MKSearchChip.swift */; };
+		FD92907C2A9E488A00A41A6B /* MKFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92907B2A9E488A00A41A6B /* MKFloatingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,10 @@
 		FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD9290622A9D1EEA00A41A6B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD92906E2A9D50B500A41A6B /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		FD9290752A9E3ACB00A41A6B /* MKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
+		FD9290772A9E421900A41A6B /* MKSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSearchBar.swift; sourceTree = "<group>"; };
+		FD9290792A9E461F00A41A6B /* MKSearchChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSearchChip.swift; sourceTree = "<group>"; };
+		FD92907B2A9E488A00A41A6B /* MKFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKFloatingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,8 @@
 		FD9290692A9D504900A41A6B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FD9290742A9E3AAE00A41A6B /* Component */,
+				FD9290712A9E3A5F00A41A6B /* Login */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,6 +126,24 @@
 			children = (
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		FD9290712A9E3A5F00A41A6B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FD9290742A9E3AAE00A41A6B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				FD9290752A9E3ACB00A41A6B /* MKButton.swift */,
+				FD9290772A9E421900A41A6B /* MKSearchBar.swift */,
+				FD9290792A9E461F00A41A6B /* MKSearchChip.swift */,
+				FD92907B2A9E488A00A41A6B /* MKFloatingButton.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +217,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD92905E2A9D1EE900A41A6B /* ContentView.swift in Sources */,
+				FD92907C2A9E488A00A41A6B /* MKFloatingButton.swift in Sources */,
 				FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */,
+				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
+				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
+				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
