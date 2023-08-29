@@ -23,6 +23,11 @@ extension Color {
     static let mkGray200: Color = .init(hex: 0xE2E3E5)
     static let mkGray100: Color = .init(hex: 0xEBEFF7)
     
+    static let kakaoContainerColor: Color = .init(hex: 0xFEE500)
+    static let kakaoSymbolColor: Color = .init(hex: 0x000000)
+    static let kakaoLabelColor: Color = .init(hex: 0x000000,
+                                              alpha: 0.85)
+    
     // hex 값으로 색을 초기화합니다.
     init(hex: UInt, alpha: Double = 1) {
         self.init(

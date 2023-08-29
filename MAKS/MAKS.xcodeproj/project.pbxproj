@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */; };
-		FD92905E2A9D1EE900A41A6B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92905D2A9D1EE900A41A6B /* ContentView.swift */; };
 		FD9290602A9D1EEA00A41A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */; };
 		FD9290632A9D1EEA00A41A6B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9290622A9D1EEA00A41A6B /* Preview Assets.xcassets */; };
 		FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92906E2A9D50B500A41A6B /* Color+.swift */; };
@@ -16,12 +15,15 @@
 		FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290772A9E421900A41A6B /* MKSearchBar.swift */; };
 		FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290792A9E461F00A41A6B /* MKSearchChip.swift */; };
 		FD92907C2A9E488A00A41A6B /* MKFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92907B2A9E488A00A41A6B /* MKFloatingButton.swift */; };
+		FD92907E2A9E4CC100A41A6B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92907D2A9E4CC100A41A6B /* LoginView.swift */; };
+		FD9290802A9E4FA800A41A6B /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92907F2A9E4FA800A41A6B /* KakaoLoginButton.swift */; };
+		FD9290822A9E52FA00A41A6B /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290812A9E52FA00A41A6B /* UIScreen+.swift */; };
+		FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FD9290582A9D1EE900A41A6B /* MAKS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAKSApp.swift; sourceTree = "<group>"; };
-		FD92905D2A9D1EE900A41A6B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD9290622A9D1EEA00A41A6B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD92906E2A9D50B500A41A6B /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
@@ -29,6 +31,11 @@
 		FD9290772A9E421900A41A6B /* MKSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSearchBar.swift; sourceTree = "<group>"; };
 		FD9290792A9E461F00A41A6B /* MKSearchChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSearchChip.swift; sourceTree = "<group>"; };
 		FD92907B2A9E488A00A41A6B /* MKFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKFloatingButton.swift; sourceTree = "<group>"; };
+		FD92907D2A9E4CC100A41A6B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FD92907F2A9E4FA800A41A6B /* KakaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginButton.swift; sourceTree = "<group>"; };
+		FD9290812A9E52FA00A41A6B /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
+		FD9290832A9E56A100A41A6B /* MAKS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAKS.entitlements; sourceTree = "<group>"; };
+		FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +68,7 @@
 		FD92905A2A9D1EE900A41A6B /* MAKS */ = {
 			isa = PBXGroup;
 			children = (
+				FD9290832A9E56A100A41A6B /* MAKS.entitlements */,
 				FD9290702A9D595600A41A6B /* Constant */,
 				FD92906D2A9D508700A41A6B /* UIConfig */,
 				FD92906C2A9D507F00A41A6B /* Extension */,
@@ -68,7 +76,6 @@
 				FD92906A2A9D504F00A41A6B /* ViewModel */,
 				FD92906B2A9D505800A41A6B /* Model */,
 				FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */,
-				FD92905D2A9D1EE900A41A6B /* ContentView.swift */,
 				FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */,
 				FD9290612A9D1EEA00A41A6B /* Preview Content */,
 			);
@@ -110,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				FD92906E2A9D50B500A41A6B /* Color+.swift */,
+				FD9290812A9E52FA00A41A6B /* UIScreen+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -131,6 +139,7 @@
 		FD9290712A9E3A5F00A41A6B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FD92907D2A9E4CC100A41A6B /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -142,6 +151,8 @@
 				FD9290772A9E421900A41A6B /* MKSearchBar.swift */,
 				FD9290792A9E461F00A41A6B /* MKSearchChip.swift */,
 				FD92907B2A9E488A00A41A6B /* MKFloatingButton.swift */,
+				FD92907F2A9E4FA800A41A6B /* KakaoLoginButton.swift */,
+				FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -188,6 +199,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = FD92904F2A9D1EE900A41A6B;
 			productRefGroup = FD9290592A9D1EE900A41A6B /* Products */;
@@ -216,12 +228,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD92905E2A9D1EE900A41A6B /* ContentView.swift in Sources */,
 				FD92907C2A9E488A00A41A6B /* MKFloatingButton.swift in Sources */,
+				FD9290822A9E52FA00A41A6B /* UIScreen+.swift in Sources */,
 				FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */,
 				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
 				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
+				FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */,
+				FD9290802A9E4FA800A41A6B /* KakaoLoginButton.swift in Sources */,
+				FD92907E2A9E4CC100A41A6B /* LoginView.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -333,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -348,6 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MAKS/MAKS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MAKS/Preview Content\"";
@@ -381,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MAKS/MAKS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MAKS/Preview Content\"";
