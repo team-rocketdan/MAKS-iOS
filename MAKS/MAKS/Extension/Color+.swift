@@ -23,6 +23,8 @@ extension Color {
     static let mkGray200: Color = .init(hex: 0xE2E3E5)
     static let mkGray100: Color = .init(hex: 0xEBEFF7)
     
+    static let mkEmailGray: Color = .init(hex: 0x636363)
+    
     static let kakaoContainerColor: Color = .init(hex: 0xFEE500)
     static let kakaoSymbolColor: Color = .init(hex: 0x000000)
     static let kakaoLabelColor: Color = .init(hex: 0x000000,
