@@ -30,6 +30,9 @@ extension Color {
     static let kakaoLabelColor: Color = .init(hex: 0x000000,
                                               alpha: 0.85)
     
+    static let tabBarShadowColor: Color = .init(hex: 0x000000,
+                                                alpha: 0.18)
+    
     // hex 값으로 색을 초기화합니다.
     init(hex: UInt, alpha: Double = 1) {
         self.init(
