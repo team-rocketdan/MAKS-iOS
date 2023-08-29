@@ -19,6 +19,8 @@
 		FD9290802A9E4FA800A41A6B /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92907F2A9E4FA800A41A6B /* KakaoLoginButton.swift */; };
 		FD9290822A9E52FA00A41A6B /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290812A9E52FA00A41A6B /* UIScreen+.swift */; };
 		FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */; };
+		FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290872A9E5C6300A41A6B /* MyPageView.swift */; };
+		FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		FD9290812A9E52FA00A41A6B /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		FD9290832A9E56A100A41A6B /* MAKS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAKS.entitlements; sourceTree = "<group>"; };
 		FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
+		FD9290872A9E5C6300A41A6B /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				FD9290742A9E3AAE00A41A6B /* Component */,
+				FD9290862A9E5C5800A41A6B /* MyPage */,
 				FD9290712A9E3A5F00A41A6B /* Login */,
 			);
 			path = View;
@@ -153,8 +158,17 @@
 				FD92907B2A9E488A00A41A6B /* MKFloatingButton.swift */,
 				FD92907F2A9E4FA800A41A6B /* KakaoLoginButton.swift */,
 				FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */,
+				FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		FD9290862A9E5C5800A41A6B /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				FD9290872A9E5C6300A41A6B /* MyPageView.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,9 +248,11 @@
 				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
 				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
+				FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */,
 				FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */,
 				FD9290802A9E4FA800A41A6B /* KakaoLoginButton.swift in Sources */,
 				FD92907E2A9E4CC100A41A6B /* LoginView.swift in Sources */,
+				FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
