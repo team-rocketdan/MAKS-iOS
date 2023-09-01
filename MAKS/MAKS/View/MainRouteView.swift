@@ -18,16 +18,33 @@ struct MainRouteView: View {
         ZStack {
             switch focusedTab {
             case .home:
-                Text("Home View")
+                HomeView()
+                    .padding(.bottom, 80)
             case .search:
                 Text("Search View")
             case .order:
                 Text("Order List View")
             case .myPage:
                 MyPageView()
+                    .padding(.bottom, 90)
             }
             
-            MKTabBar(selectedIndex: $selectedIndex)
+            
+            VStack(spacing: 0) {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    MKFloatingButton {
+                        print("floating Button")
+                    }
+                }
+                .padding(.bottom, 20)
+                .padding(.trailing, 20)
+                
+                MKTabBar(selectedIndex: $selectedIndex)
+            }
         }
     }
 }
