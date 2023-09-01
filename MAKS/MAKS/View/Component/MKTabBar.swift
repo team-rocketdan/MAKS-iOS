@@ -25,8 +25,6 @@ struct MKTabBar: View {
     
     var body: some View {
         VStack {
-            Spacer()
-            
             HStack(spacing: 60) {
                 homeTabButton
                 
@@ -39,13 +37,15 @@ struct MKTabBar: View {
             .padding(.vertical, 15)
             .padding(.bottom, 7)
             .padding(.horizontal, 40)
-            .frame(width: UIScreen.screenWidth)
+            .frame(width: UIScreen.screenWidth, height: 72)
             .background(Color.white)
             .cornerRadius(12)
             .shadow(color: .tabBarShadowColor,
                 radius: 12)
+            
         }
-        .ignoresSafeArea(.container, edges: .bottom)
+        .ignoresSafeArea(.container,
+                         edges: .bottom)
         
     }
     
