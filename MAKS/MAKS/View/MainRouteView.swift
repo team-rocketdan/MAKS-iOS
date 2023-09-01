@@ -21,7 +21,7 @@ struct MainRouteView: View {
                 HomeView()
                     .padding(.bottom, 80)
             case .search:
-                Text("Search View")
+                SearchView()
             case .order:
                 OrderListView()
             case .myPage:
