@@ -23,6 +23,9 @@
 		FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */; };
 		FDD1F5DA2A9EA4BF0076469D /* MKTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5D92A9EA4BF0076469D /* MKTabBar.swift */; };
 		FDD1F5DC2A9EB05F0076469D /* MainRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */; };
+		FDD1F5E22A9EB5B20076469D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E12A9EB5B20076469D /* HomeView.swift */; };
+		FDD1F5E42A9FCA150076469D /* MarketRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E32A9FCA150076469D /* MarketRowView.swift */; };
+		FDD1F5E62A9FD5470076469D /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E52A9FD5470076469D /* TitleBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightButton.swift; sourceTree = "<group>"; };
 		FDD1F5D92A9EA4BF0076469D /* MKTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBar.swift; sourceTree = "<group>"; };
 		FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouteView.swift; sourceTree = "<group>"; };
+		FDD1F5E12A9EB5B20076469D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FDD1F5E32A9FCA150076469D /* MarketRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketRowView.swift; sourceTree = "<group>"; };
+		FDD1F5E52A9FD5470076469D /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */,
+				FDD1F5DD2A9EB5510076469D /* Home */,
+				FDD1F5DF2A9EB5690076469D /* Search */,
+				FDD1F5E02A9EB5700076469D /* OrderList */,
 				FD9290742A9E3AAE00A41A6B /* Component */,
 				FD9290862A9E5C5800A41A6B /* MyPage */,
 				FD9290712A9E3A5F00A41A6B /* Login */,
@@ -165,6 +174,7 @@
 				FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */,
 				FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */,
 				FDD1F5D92A9EA4BF0076469D /* MKTabBar.swift */,
+				FDD1F5E52A9FD5470076469D /* TitleBar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -175,6 +185,29 @@
 				FD9290872A9E5C6300A41A6B /* MyPageView.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		FDD1F5DD2A9EB5510076469D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FDD1F5E12A9EB5B20076469D /* HomeView.swift */,
+				FDD1F5E32A9FCA150076469D /* MarketRowView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FDD1F5DF2A9EB5690076469D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		FDD1F5E02A9EB5700076469D /* OrderList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OrderList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +284,9 @@
 				FD92907C2A9E488A00A41A6B /* MKFloatingButton.swift in Sources */,
 				FD9290822A9E52FA00A41A6B /* UIScreen+.swift in Sources */,
 				FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */,
+				FDD1F5E22A9EB5B20076469D /* HomeView.swift in Sources */,
 				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
+				FDD1F5E42A9FCA150076469D /* MarketRowView.swift in Sources */,
 				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
 				FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */,
@@ -262,6 +297,7 @@
 				FDD1F5DC2A9EB05F0076469D /* MainRouteView.swift in Sources */,
 				FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
+				FDD1F5E62A9FD5470076469D /* TitleBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
