@@ -29,6 +29,8 @@
 		FDD1F5E82AA2338D0076469D /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E72AA2338D0076469D /* OrderListView.swift */; };
 		FDD1F5EA2AA233CC0076469D /* OrderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E92AA233CC0076469D /* OrderRowView.swift */; };
 		FDD1F5EC2AA234440076469D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5EB2AA234440076469D /* Date+.swift */; };
+		FDD1F5EE2AA252B90076469D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5ED2AA252B90076469D /* SearchView.swift */; };
+		FDD1F5F02AA253190076469D /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5EF2AA253190076469D /* SearchResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		FDD1F5E72AA2338D0076469D /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		FDD1F5E92AA233CC0076469D /* OrderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRowView.swift; sourceTree = "<group>"; };
 		FDD1F5EB2AA234440076469D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		FDD1F5ED2AA252B90076469D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FDD1F5EF2AA253190076469D /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,8 @@
 		FDD1F5DF2A9EB5690076469D /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				FDD1F5ED2AA252B90076469D /* SearchView.swift */,
+				FDD1F5EF2AA253190076469D /* SearchResultView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -300,12 +306,14 @@
 				FDD1F5EC2AA234440076469D /* Date+.swift in Sources */,
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
 				FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */,
+				FDD1F5EE2AA252B90076469D /* SearchView.swift in Sources */,
 				FDD1F5DA2A9EA4BF0076469D /* MKTabBar.swift in Sources */,
 				FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */,
 				FDD1F5E82AA2338D0076469D /* OrderListView.swift in Sources */,
 				FD9290802A9E4FA800A41A6B /* KakaoLoginButton.swift in Sources */,
 				FD92907E2A9E4CC100A41A6B /* LoginView.swift in Sources */,
 				FDD1F5DC2A9EB05F0076469D /* MainRouteView.swift in Sources */,
+				FDD1F5F02AA253190076469D /* SearchResultView.swift in Sources */,
 				FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
 				FDD1F5E62A9FD5470076469D /* TitleBar.swift in Sources */,
