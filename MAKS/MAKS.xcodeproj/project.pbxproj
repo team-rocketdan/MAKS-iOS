@@ -26,6 +26,9 @@
 		FDD1F5E22A9EB5B20076469D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E12A9EB5B20076469D /* HomeView.swift */; };
 		FDD1F5E42A9FCA150076469D /* MarketRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E32A9FCA150076469D /* MarketRowView.swift */; };
 		FDD1F5E62A9FD5470076469D /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E52A9FD5470076469D /* TitleBar.swift */; };
+		FDD1F5E82AA2338D0076469D /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E72AA2338D0076469D /* OrderListView.swift */; };
+		FDD1F5EA2AA233CC0076469D /* OrderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5E92AA233CC0076469D /* OrderRowView.swift */; };
+		FDD1F5EC2AA234440076469D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5EB2AA234440076469D /* Date+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		FDD1F5E12A9EB5B20076469D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FDD1F5E32A9FCA150076469D /* MarketRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketRowView.swift; sourceTree = "<group>"; };
 		FDD1F5E52A9FD5470076469D /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
+		FDD1F5E72AA2338D0076469D /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
+		FDD1F5E92AA233CC0076469D /* OrderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRowView.swift; sourceTree = "<group>"; };
+		FDD1F5EB2AA234440076469D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 			children = (
 				FD92906E2A9D50B500A41A6B /* Color+.swift */,
 				FD9290812A9E52FA00A41A6B /* UIScreen+.swift */,
+				FDD1F5EB2AA234440076469D /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -206,6 +213,8 @@
 		FDD1F5E02A9EB5700076469D /* OrderList */ = {
 			isa = PBXGroup;
 			children = (
+				FDD1F5E72AA2338D0076469D /* OrderListView.swift */,
+				FDD1F5E92AA233CC0076469D /* OrderRowView.swift */,
 			);
 			path = OrderList;
 			sourceTree = "<group>";
@@ -288,16 +297,19 @@
 				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
 				FDD1F5E42A9FCA150076469D /* MarketRowView.swift in Sources */,
 				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
+				FDD1F5EC2AA234440076469D /* Date+.swift in Sources */,
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
 				FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */,
 				FDD1F5DA2A9EA4BF0076469D /* MKTabBar.swift in Sources */,
 				FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */,
+				FDD1F5E82AA2338D0076469D /* OrderListView.swift in Sources */,
 				FD9290802A9E4FA800A41A6B /* KakaoLoginButton.swift in Sources */,
 				FD92907E2A9E4CC100A41A6B /* LoginView.swift in Sources */,
 				FDD1F5DC2A9EB05F0076469D /* MainRouteView.swift in Sources */,
 				FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
 				FDD1F5E62A9FD5470076469D /* TitleBar.swift in Sources */,
+				FDD1F5EA2AA233CC0076469D /* OrderRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
