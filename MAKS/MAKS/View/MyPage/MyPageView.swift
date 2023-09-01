@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyPageView: View {
+    let textPadding: CGFloat  = 15
     // FIXME: user data로 수정해야 함. 
     let name: String = "마크"
     let email: String = "mark@gmail.com"
@@ -16,23 +17,22 @@ struct MyPageView: View {
     }
     
     private let sectionTitle: [String] = ["공지사항",
-                                  "자주 묻는 질문",
-                                  "이벤트",
-                                  "고객센터",
-                                  "환경설정",
-                                  "약관 및 정책"]
+                                  "문의하기",
+                                  "약관 및 정책",
+                                  "환경설정"]
+//                                  "환경설정",
+//                                  "약관 및 정책"]
     
     var body: some View {
         VStack(spacing: 0) {
-
             sectionOfTitle
             
             sectionOfUserInformation
-                
+            
             sectionOfDivider
-            
+                
             sectionOfNavigations
-            
+                
             sectionOfVersion
             
             sectionOfDivider
@@ -85,13 +85,16 @@ struct MyPageView: View {
             }
         }
         .padding(20)
+        .background(Color.white)
+        .onTapGesture {
+            print("navigate to my profile information detail view")
+        }
     } // - sectionOfUserInformation
     
     //MARK: - sectionOfDivider
     
     private var sectionOfDivider: some View {
-        VStack {
-            EmptyView()
+        VStack(spacing: 0) {
         }
         .frame(width: UIScreen.screenWidth,
                height: 10)
@@ -104,7 +107,11 @@ struct MyPageView: View {
                spacing: 0) {
             ForEach(sectionTitle, id: \.self) { title in
                 MyPageSectionRow(title: title) {
-                    print("navigate to section")
+                    
+                }
+                .background(Color.white)
+                .onTapGesture {
+                    print("tap navigation")
                 }
                 Divider()
             }
@@ -120,13 +127,15 @@ struct MyPageView: View {
                               weight: .medium))
             Spacer()
         }
-        .padding(20)
+        .padding(.vertical, textPadding)
+        .padding(.horizontal, 20)
     } // - sectionOfVersion
     
     //MARK: - sectionOfLogOut
     
     private var sectionOfLogOut: some View {
         HStack {
+            
             Spacer()
             
             Button {
@@ -145,6 +154,7 @@ struct MyPageView: View {
 //MARK: - MyPageSectionRow
 
 struct MyPageSectionRow: View {
+    let textPadding: CGFloat  = 15
     let title: String
     let action: () -> ()
     
@@ -160,6 +170,8 @@ struct MyPageSectionRow: View {
                 action()
             }
         }
-        .padding(20)
+        .padding(.vertical, textPadding)
+        .padding(.horizontal, 20)
+        
     }
 }

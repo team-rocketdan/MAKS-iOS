@@ -18,15 +18,16 @@ struct MKFloatingButton: View {
     
     var body: some View {
         Button {
+            isActive.toggle()
             action()
         } label: {
             Image("message.and.waveform")
                 .renderingMode(.template)
                 .resizable()
-                .frame(width: 16,
-                       height: 16)
+                .frame(width: 28,
+                       height: 28)
                 .foregroundColor(.white)
-                .padding(10)
+                .padding(16)
                 .background(buttonColor)
                 .cornerRadius(100)
         }
