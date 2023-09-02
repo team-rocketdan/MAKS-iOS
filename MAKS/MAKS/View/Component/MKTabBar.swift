@@ -34,19 +34,19 @@ struct MKTabBar: View {
                 
                 myPageTabButton
             }
-            .padding(.vertical, 15)
-            .padding(.bottom, 7)
-            .padding(.horizontal, 40)
-            .frame(width: UIScreen.screenWidth, height: 72)
-            .background(Color.white)
-            .cornerRadius(12)
-            .shadow(color: .tabBarShadowColor,
-                radius: 12)
+            
+            Spacer()
             
         }
-        .ignoresSafeArea(.container,
-                         edges: .bottom)
-        
+        .padding(.vertical, 15)
+        .padding(.bottom, 7)
+        .padding(.horizontal, 40)
+        .frame(width: UIScreen.screenWidth)
+        .frame(minHeight: 72)
+        .background(Color.white)
+        .cornerRadius(12)
+        .shadow(color: .tabBarShadowColor,
+                radius: 12)
     }
     
     //MARK: - homeTabButton
