@@ -44,6 +44,8 @@ struct MainRouteView: View {
                 .padding(.trailing, 20)
                 
                 MKTabBar(selectedIndex: $selectedIndex)
+                    .ignoresSafeArea()
+                    .frame(maxHeight: 72)
             }
         }
     }
