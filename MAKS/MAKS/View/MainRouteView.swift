@@ -19,14 +19,16 @@ struct MainRouteView: View {
             switch focusedTab {
             case .home:
                 HomeView()
-                    .padding(.bottom, 80)
+                    .padding(.bottom, 75)
             case .search:
                 SearchView()
+                    .padding(.bottom, 75)
             case .order:
                 OrderListView()
+                    .padding(.bottom, 75)
             case .myPage:
                 MyPageView()
-                    .padding(.bottom, 90)
+                    .padding(.bottom, 75)
             }
             
             
