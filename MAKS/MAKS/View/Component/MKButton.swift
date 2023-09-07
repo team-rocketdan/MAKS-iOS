@@ -19,10 +19,10 @@ struct MKButton<Label: View>: View {
     
     init(style: MKButtonStyle,
          action: @escaping () -> Void,
-         label: Label) {
+         @ViewBuilder label: () -> Label) {
         self.style = style
         self.action = action
-        self.label = label
+        self.label = label()
     }
     
     var body: some View {
@@ -32,9 +32,7 @@ struct MKButton<Label: View>: View {
             label
                 .mkButtonViewModifier(style: style)
         }
-
     }
-    
 }
 
 struct MKButtonViewModifier: ViewModifier {
