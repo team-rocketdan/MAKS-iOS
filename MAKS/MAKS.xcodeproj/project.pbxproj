@@ -31,6 +31,8 @@
 		FDD1F5EC2AA234440076469D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5EB2AA234440076469D /* Date+.swift */; };
 		FDD1F5EE2AA252B90076469D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5ED2AA252B90076469D /* SearchView.swift */; };
 		FDD1F5F02AA253190076469D /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5EF2AA253190076469D /* SearchResultView.swift */; };
+		FDECBD342AA6FC5D00EB0619 /* MarketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDECBD332AA6FC5D00EB0619 /* MarketDetailView.swift */; };
+		FDECBD362AA7248000EB0619 /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDECBD352AA7248000EB0619 /* MenuRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		FDD1F5EB2AA234440076469D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		FDD1F5ED2AA252B90076469D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FDD1F5EF2AA253190076469D /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		FDECBD332AA6FC5D00EB0619 /* MarketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailView.swift; sourceTree = "<group>"; };
+		FDECBD352AA7248000EB0619 /* MenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */,
+				FDECBD322AA4274A00EB0619 /* Market */,
 				FDD1F5DD2A9EB5510076469D /* Home */,
 				FDD1F5DF2A9EB5690076469D /* Search */,
 				FDD1F5E02A9EB5700076469D /* OrderList */,
@@ -225,6 +230,15 @@
 			path = OrderList;
 			sourceTree = "<group>";
 		};
+		FDECBD322AA4274A00EB0619 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				FDECBD332AA6FC5D00EB0619 /* MarketDetailView.swift */,
+				FDECBD352AA7248000EB0619 /* MenuRow.swift */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,9 +315,11 @@
 				FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */,
 				FDD1F5E22A9EB5B20076469D /* HomeView.swift in Sources */,
 				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
+				FDECBD362AA7248000EB0619 /* MenuRow.swift in Sources */,
 				FDD1F5E42A9FCA150076469D /* MarketRowView.swift in Sources */,
 				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
 				FDD1F5EC2AA234440076469D /* Date+.swift in Sources */,
+				FDECBD342AA6FC5D00EB0619 /* MarketDetailView.swift in Sources */,
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
 				FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */,
 				FDD1F5EE2AA252B90076469D /* SearchView.swift in Sources */,
