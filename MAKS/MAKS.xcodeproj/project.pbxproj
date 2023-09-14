@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD30DCA62AB040E5002A35C7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */; };
+		FD30DCA82AB040FD002A35C7 /* MarketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */; };
+		FD30DCAA2AB04129002A35C7 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA92AB04129002A35C7 /* UserViewModel.swift */; };
+		FD30DCAC2AB0413D002A35C7 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCAB2AB0413D002A35C7 /* OrderViewModel.swift */; };
+		FD30DCAE2AB041CC002A35C7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCAD2AB041CC002A35C7 /* Menu.swift */; };
+		FD30DCB02AB042C8002A35C7 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCAF2AB042C8002A35C7 /* Market.swift */; };
+		FD30DCB22AB04302002A35C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCB12AB04302002A35C7 /* User.swift */; };
+		FD30DCB42AB04349002A35C7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCB32AB04349002A35C7 /* Order.swift */; };
+		FD30DCB62AB044EC002A35C7 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCB52AB044EC002A35C7 /* ViewModelProtocol.swift */; };
 		FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */; };
 		FD9290602A9D1EEA00A41A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */; };
 		FD9290632A9D1EEA00A41A6B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9290622A9D1EEA00A41A6B /* Preview Assets.xcassets */; };
@@ -36,6 +45,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewModel.swift; sourceTree = "<group>"; };
+		FD30DCA92AB04129002A35C7 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		FD30DCAB2AB0413D002A35C7 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		FD30DCAD2AB041CC002A35C7 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		FD30DCAF2AB042C8002A35C7 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		FD30DCB12AB04302002A35C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FD30DCB32AB04349002A35C7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		FD30DCB52AB044EC002A35C7 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		FD9290582A9D1EE900A41A6B /* MAKS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAKSApp.swift; sourceTree = "<group>"; };
 		FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,6 +154,11 @@
 		FD92906A2A9D504F00A41A6B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */,
+				FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */,
+				FD30DCA92AB04129002A35C7 /* UserViewModel.swift */,
+				FD30DCAB2AB0413D002A35C7 /* OrderViewModel.swift */,
+				FD30DCB52AB044EC002A35C7 /* ViewModelProtocol.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -143,6 +166,10 @@
 		FD92906B2A9D505800A41A6B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FD30DCAD2AB041CC002A35C7 /* Menu.swift */,
+				FD30DCAF2AB042C8002A35C7 /* Market.swift */,
+				FD30DCB12AB04302002A35C7 /* User.swift */,
+				FD30DCB32AB04349002A35C7 /* Order.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,7 +339,10 @@
 			files = (
 				FD92907C2A9E488A00A41A6B /* MKFloatingButton.swift in Sources */,
 				FD9290822A9E52FA00A41A6B /* UIScreen+.swift in Sources */,
+				FD30DCB42AB04349002A35C7 /* Order.swift in Sources */,
 				FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */,
+				FD30DCA62AB040E5002A35C7 /* MenuViewModel.swift in Sources */,
+				FD30DCB22AB04302002A35C7 /* User.swift in Sources */,
 				FDD1F5E22A9EB5B20076469D /* HomeView.swift in Sources */,
 				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
 				FDECBD362AA7248000EB0619 /* MenuRow.swift in Sources */,
@@ -327,13 +357,19 @@
 				FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */,
 				FDD1F5E82AA2338D0076469D /* OrderListView.swift in Sources */,
 				FD9290802A9E4FA800A41A6B /* KakaoLoginButton.swift in Sources */,
+				FD30DCAE2AB041CC002A35C7 /* Menu.swift in Sources */,
+				FD30DCA82AB040FD002A35C7 /* MarketViewModel.swift in Sources */,
+				FD30DCAC2AB0413D002A35C7 /* OrderViewModel.swift in Sources */,
 				FD92907E2A9E4CC100A41A6B /* LoginView.swift in Sources */,
 				FDD1F5DC2A9EB05F0076469D /* MainRouteView.swift in Sources */,
 				FDD1F5F02AA253190076469D /* SearchResultView.swift in Sources */,
 				FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
 				FDD1F5E62A9FD5470076469D /* TitleBar.swift in Sources */,
+				FD30DCB62AB044EC002A35C7 /* ViewModelProtocol.swift in Sources */,
+				FD30DCAA2AB04129002A35C7 /* UserViewModel.swift in Sources */,
 				FDD1F5EA2AA233CC0076469D /* OrderRowView.swift in Sources */,
+				FD30DCB02AB042C8002A35C7 /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
