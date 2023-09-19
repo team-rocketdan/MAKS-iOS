@@ -54,6 +54,7 @@
 		25231EF7662094413F192547 /* Pods-MAKS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAKS.debug.xcconfig"; path = "Target Support Files/Pods-MAKS/Pods-MAKS.debug.xcconfig"; sourceTree = "<group>"; };
 		B255A3C51C8FB7B79652B3A0 /* Pods-MAKS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAKS.release.xcconfig"; path = "Target Support Files/Pods-MAKS/Pods-MAKS.release.xcconfig"; sourceTree = "<group>"; };
 		D474EEB403DE83F309F38AF5 /* Pods_MAKS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAKS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD12DF8C2ABA05F200B99AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewModel.swift; sourceTree = "<group>"; };
 		FD30DCA92AB04129002A35C7 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -124,7 +125,6 @@
 				25231EF7662094413F192547 /* Pods-MAKS.debug.xcconfig */,
 				B255A3C51C8FB7B79652B3A0 /* Pods-MAKS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -149,6 +149,7 @@
 		FD92905A2A9D1EE900A41A6B /* MAKS */ = {
 			isa = PBXGroup;
 			children = (
+				FD12DF8C2ABA05F200B99AF7 /* Info.plist */,
 				FD9290832A9E56A100A41A6B /* MAKS.entitlements */,
 				FD9290702A9D595600A41A6B /* Constant */,
 				FD92906D2A9D508700A41A6B /* UIConfig */,
@@ -594,6 +595,7 @@
 				DEVELOPMENT_TEAM = 4N97P5J52N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MAKS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -629,6 +631,7 @@
 				DEVELOPMENT_TEAM = 4N97P5J52N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MAKS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
