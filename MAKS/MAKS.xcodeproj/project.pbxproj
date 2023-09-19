@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1A5F152C69CD60BD60BFD54 /* Pods_MAKS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D474EEB403DE83F309F38AF5 /* Pods_MAKS.framework */; };
 		FD30DCA62AB040E5002A35C7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */; };
 		FD30DCA82AB040FD002A35C7 /* MarketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */; };
 		FD30DCAA2AB04129002A35C7 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA92AB04129002A35C7 /* UserViewModel.swift */; };
@@ -50,6 +51,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25231EF7662094413F192547 /* Pods-MAKS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAKS.debug.xcconfig"; path = "Target Support Files/Pods-MAKS/Pods-MAKS.debug.xcconfig"; sourceTree = "<group>"; };
+		B255A3C51C8FB7B79652B3A0 /* Pods-MAKS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAKS.release.xcconfig"; path = "Target Support Files/Pods-MAKS/Pods-MAKS.release.xcconfig"; sourceTree = "<group>"; };
+		D474EEB403DE83F309F38AF5 /* Pods_MAKS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAKS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewModel.swift; sourceTree = "<group>"; };
 		FD30DCA92AB04129002A35C7 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -99,17 +103,38 @@
 				FD465B942AB92C6800827911 /* KakaoSDK in Frameworks */,
 				FD465B9B2AB9307500827911 /* SwiftyJSON in Frameworks */,
 				FD465B962AB92C6800827911 /* KakaoSDKAuth in Frameworks */,
+				B1A5F152C69CD60BD60BFD54 /* Pods_MAKS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		257B71500E36FBB96008D74C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D474EEB403DE83F309F38AF5 /* Pods_MAKS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A58044F3A3DCE014B6D2C88F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25231EF7662094413F192547 /* Pods-MAKS.debug.xcconfig */,
+				B255A3C51C8FB7B79652B3A0 /* Pods-MAKS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FD92904F2A9D1EE900A41A6B = {
 			isa = PBXGroup;
 			children = (
 				FD92905A2A9D1EE900A41A6B /* MAKS */,
 				FD9290592A9D1EE900A41A6B /* Products */,
+				A58044F3A3DCE014B6D2C88F /* Pods */,
+				257B71500E36FBB96008D74C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -283,9 +308,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD9290662A9D1EEA00A41A6B /* Build configuration list for PBXNativeTarget "MAKS" */;
 			buildPhases = (
+				A142FCC34B6A7DFCC660F8C1 /* [CP] Check Pods Manifest.lock */,
 				FD9290542A9D1EE900A41A6B /* Sources */,
 				FD9290552A9D1EE900A41A6B /* Frameworks */,
 				FD9290562A9D1EE900A41A6B /* Resources */,
+				0A58A0602360C3A706DADB7A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,6 +380,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A58A0602360C3A706DADB7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MAKS/Pods-MAKS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MAKS/Pods-MAKS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MAKS/Pods-MAKS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A142FCC34B6A7DFCC660F8C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MAKS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FD9290542A9D1EE900A41A6B /* Sources */ = {
@@ -514,6 +583,7 @@
 		};
 		FD9290672A9D1EEA00A41A6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25231EF7662094413F192547 /* Pods-MAKS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -548,6 +618,7 @@
 		};
 		FD9290682A9D1EEA00A41A6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B255A3C51C8FB7B79652B3A0 /* Pods-MAKS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
