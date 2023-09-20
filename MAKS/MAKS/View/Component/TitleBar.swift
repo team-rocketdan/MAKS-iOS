@@ -10,9 +10,16 @@ import SwiftUI
 struct TitleBar: View {
     var body: some View {
         HStack {
-            Text("MAKS.")
+            Text("MAKS")
                 .font(.system(size: 28,
                               weight: .black))
+                .foregroundColor(.mkMainColor)
+            +
+            Text(".")
+                .font(.system(size: 28,
+                              weight: .black))
+                .foregroundColor(.mkPointColor)
+            
             Spacer()
         }
         .padding(.vertical, 10)
