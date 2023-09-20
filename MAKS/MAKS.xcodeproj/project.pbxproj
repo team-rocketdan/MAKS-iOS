@@ -17,6 +17,7 @@
 		FD30DCB22AB04302002A35C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCB12AB04302002A35C7 /* User.swift */; };
 		FD30DCB42AB04349002A35C7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCB32AB04349002A35C7 /* Order.swift */; };
 		FD30DCB62AB044EC002A35C7 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCB52AB044EC002A35C7 /* ViewModelProtocol.swift */; };
+		FD436EBF2ABB2A4B003EEF29 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD436EBE2ABB2A4A003EEF29 /* NaverMapView.swift */; };
 		FD465B912AB92C0800827911 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FD465B902AB92C0800827911 /* Alamofire */; };
 		FD465B942AB92C6800827911 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FD465B932AB92C6800827911 /* KakaoSDK */; };
 		FD465B962AB92C6800827911 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FD465B952AB92C6800827911 /* KakaoSDKAuth */; };
@@ -64,6 +65,7 @@
 		FD30DCB12AB04302002A35C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FD30DCB32AB04349002A35C7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		FD30DCB52AB044EC002A35C7 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		FD436EBE2ABB2A4A003EEF29 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
 		FD9290582A9D1EE900A41A6B /* MAKS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAKSApp.swift; sourceTree = "<group>"; };
 		FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			children = (
 				FDD1F5E12A9EB5B20076469D /* HomeView.swift */,
 				FDD1F5E32A9FCA150076469D /* MarketRowView.swift */,
+				FD436EBE2ABB2A4A003EEF29 /* NaverMapView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
 				FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */,
 				FDD1F5EE2AA252B90076469D /* SearchView.swift in Sources */,
+				FD436EBF2ABB2A4B003EEF29 /* NaverMapView.swift in Sources */,
 				FDD1F5DA2A9EA4BF0076469D /* MKTabBar.swift in Sources */,
 				FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */,
 				FDD1F5E82AA2338D0076469D /* OrderListView.swift in Sources */,
@@ -596,6 +600,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MAKS/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -632,6 +639,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MAKS/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
