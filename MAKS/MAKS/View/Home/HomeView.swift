@@ -18,7 +18,7 @@ struct HomeView: View {
                 .padding(.vertical, 10)
                 .padding(.horizontal, 20)
             
-            Map(mapRect: .constant(.world))
+            NaverMapView()
             Text("지금 떠오르는 매장")
                 .font(.system(size: 20,
                               weight: .bold))
