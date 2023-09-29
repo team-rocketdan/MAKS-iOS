@@ -9,7 +9,11 @@ import SwiftUI
 
 struct SearchResultView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var marketViewModel: MarketViewModel
+    
     @Binding var searchText: String
+    
+    @State var isPresentedMarketDetailView: Bool = false
     
     var body: some View {
         VStack {
@@ -21,14 +25,29 @@ struct SearchResultView: View {
                 .padding(.horizontal, 20)
             
             ScrollView {
-                ForEach(0..<10) { index in
-                    MarketRowView()
+                ForEach(marketViewModel.markets, id: \.id) { market in
+                    MarketRowView(market: market) {
+                        isPresentedMarketDetailView = true
+                    }
                         .padding(.vertical, 10)
                         .padding(.horizontal, 20)
                 }
                 
             }
-            
+            .navigationBarBackButtonHidden(true)
+        }
+        .onAppear {
+            Task {
+//                do {
+//                    try await marketViewModel.fetchMarkets()
+//                } catch {
+//                    // Alert
+//                    print("\(error.localizedDescription)")
+//                }
+            }
+        }
+        .navigationDestination(isPresented: $isPresentedMarketDetailView) {
+            MarketDetailView(market: .defaultModel)
         }
     }
     //MARK: - titleSection
@@ -46,7 +65,8 @@ struct SearchResultView: View {
             Spacer()
             
             Text("검색")
-                .font(.system(size: 24, weight: .bold))
+                .font(.system(size: 24,
+                              weight: .bold))
             
             Spacer()
         }
