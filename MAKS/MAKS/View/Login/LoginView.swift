@@ -9,6 +9,9 @@ import SwiftUI
 import AuthenticationServices
 
 struct LoginView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var marketViewModel: MarketViewModel
+    
     var body: some View {
         VStack {
             
@@ -24,12 +27,22 @@ struct LoginView: View {
             
             AppleLoginButton{
                 print("login with Apple")
+                Task {
+                    do {
+                        try await marketViewModel.fetchMarkets()
+                        userViewModel.isLogin = true
+                    } catch {
+                        print("\(error.localizedDescription)")
+                    }
+                }
+                
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             
             KakaoLoginButton {
                 print("login with kakao")
+                userViewModel.isLogin = true
                 
             }
             .padding(.vertical, 10)
