@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MyPageView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     let textPadding: CGFloat  = 15
     // FIXME: user data로 수정해야 함. 
     let name: String = "마크"
@@ -20,15 +22,17 @@ struct MyPageView: View {
                                   "문의하기",
                                   "약관 및 정책",
                                   "환경설정"]
-//                                  "환경설정",
-//                                  "약관 및 정책"]
     
     var body: some View {
         VStack(spacing: 0) {
             sectionOfTitle
             
-            sectionOfUserInformation
-            
+            Button {
+                print("navigate to mypage")
+            } label: {
+                sectionOfUserInformation
+            }
+
             sectionOfDivider
                 
             sectionOfNavigations
@@ -61,34 +65,30 @@ struct MyPageView: View {
     private var sectionOfUserInformation: some View {
         HStack {
             // FIXME: 유저 이미지로 교체
-            Image("star.fill")
+            Image.imagePlaceHolder
                 .resizable()
                 .frame(width: 60,
                        height: 60)
-                .background(Color.green)
                 .clipShape(Circle())
             
             VStack(alignment: .leading,
                    spacing: 10) {
-                Text(name)
+                Text(userViewModel.currentUser?.name ?? User.defaultModel.name)
                     .font(.system(size: 20,
                                   weight: .bold))
-                Text(email)
+                Text(userViewModel.currentUser?.email ?? User.defaultModel.email)
                     .font(.system(size: 14))
                     .foregroundColor(.mkEmailGray)
             }
             
             Spacer()
             
-            ChevronRightButton {
-                print("navigate to detail view")
-            }
+            Image("chevron.right")
+                .renderingMode(.template)
+                .foregroundColor(.mkGray500)
         }
         .padding(20)
         .background(Color.white)
-        .onTapGesture {
-            print("navigate to my profile information detail view")
-        }
     } // - sectionOfUserInformation
     
     //MARK: - sectionOfDivider
@@ -107,7 +107,7 @@ struct MyPageView: View {
                spacing: 0) {
             ForEach(sectionTitle, id: \.self) { title in
                 MyPageSectionRow(title: title) {
-                    
+                    // navigate to detail view
                 }
                 .background(Color.white)
                 .onTapGesture {
@@ -140,6 +140,7 @@ struct MyPageView: View {
             
             Button {
                 print("logout")
+                userViewModel.isLogin = false
             } label: {
                 Text("로그아웃")
                     .underline()
@@ -156,9 +157,19 @@ struct MyPageView: View {
 struct MyPageSectionRow: View {
     let textPadding: CGFloat  = 15
     let title: String
-    let action: () -> ()
+    let action: () -> (Void)
     
     var body: some View {
+        Button {
+            action()
+        } label: {
+            label
+        }
+    }
+    
+    //MARK: - label 
+    
+    var label: some View {
         HStack {
             Text(title)
                 .font(.system(size: 18,
@@ -166,12 +177,11 @@ struct MyPageSectionRow: View {
                 
             Spacer()
             
-            ChevronRightButton {
-                action()
-            }
+            Image("chevron.right")
+                .renderingMode(.template)
+                .foregroundColor(.mkGray500)
         }
         .padding(.vertical, textPadding)
         .padding(.horizontal, 20)
-        
     }
 }
