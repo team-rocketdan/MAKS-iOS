@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class OrderViewModel: ObservableObject {
+    @Published var orderedList: [Order] = []
+    
+    @Published var menusInCart: [Menu] = []
+    
+    
+}
