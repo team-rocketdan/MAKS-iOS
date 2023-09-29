@@ -23,9 +23,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct MAKSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject var userViewModel: UserViewModel = .init()
+    @StateObject var marketViewModel: MarketViewModel = .init()
+    @StateObject var menuViewModel: MenuViewModel = .init()
+    
     var body: some Scene {
         WindowGroup {
-            MainRouteView()
+            LoginRouteView()
+                .accentColor(.mkMainColor)
+                .environmentObject(userViewModel)
+                .environmentObject(marketViewModel)
+                .environmentObject(menuViewModel)
         }
     }
 }
