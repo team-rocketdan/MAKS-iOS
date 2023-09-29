@@ -15,9 +15,16 @@ struct OrderRowView: View {
     let orderMenu: String = "플레인 크로플 외 2개"
     let orderTotal: Int = 8600
     
-    let marketImage: Image = Image("")
-    let orderStatus: String = "조리 중"
+    let marketImageName: String? = nil
+    var marketImage: Image {
+        guard let imageName = marketImageName
+        else {
+            return Image("")
+        }
+        return Image(imageName)
+    }
     
+    let orderStatus: String = "조리 중"
     
     var body: some View {
         VStack(spacing: 0) {
@@ -96,8 +103,10 @@ struct OrderRowView: View {
             .background {
                 // FIXME: 실제 매장 이미지로 변경
                 marketImage
+                    .resizable()
+                    .frame(width: 69, height: 69)
             }
-            .background(Color.mkGray300)
-            .cornerRadius(100)
+            .background(Color.mkGray200)
+            .clipShape(Circle())
     } // - marketImageSection
 }
