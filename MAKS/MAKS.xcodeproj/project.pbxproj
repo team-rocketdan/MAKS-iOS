@@ -11,6 +11,8 @@
 		FD0041932AC442CD00EE0444 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041922AC442CD00EE0444 /* APIManager.swift */; };
 		FD0041952AC5E78600EE0444 /* LoginRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041942AC5E78600EE0444 /* LoginRouteView.swift */; };
 		FD0041972AC7239700EE0444 /* MKStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041962AC7239700EE0444 /* MKStepper.swift */; };
+		FD00419A2AC757E500EE0444 /* STTTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041992AC757E500EE0444 /* STTTestView.swift */; };
+		FD00419E2AC7820100EE0444 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00419D2AC7820100EE0444 /* SpeechRecognizer.swift */; };
 		FD30DCA62AB040E5002A35C7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */; };
 		FD30DCA82AB040FD002A35C7 /* MarketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */; };
 		FD30DCAA2AB04129002A35C7 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30DCA92AB04129002A35C7 /* UserViewModel.swift */; };
@@ -62,6 +64,8 @@
 		FD0041922AC442CD00EE0444 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		FD0041942AC5E78600EE0444 /* LoginRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouteView.swift; sourceTree = "<group>"; };
 		FD0041962AC7239700EE0444 /* MKStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKStepper.swift; sourceTree = "<group>"; };
+		FD0041992AC757E500EE0444 /* STTTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTTestView.swift; sourceTree = "<group>"; };
+		FD00419D2AC7820100EE0444 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		FD12DF8C2ABA05F200B99AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewModel.swift; sourceTree = "<group>"; };
@@ -138,6 +142,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FD0041982AC757BD00EE0444 /* STT */ = {
+			isa = PBXGroup;
+			children = (
+				FD0041992AC757E500EE0444 /* STTTestView.swift */,
+				FD00419D2AC7820100EE0444 /* SpeechRecognizer.swift */,
+			);
+			path = STT;
+			sourceTree = "<group>";
+		};
 		FD92904F2A9D1EE900A41A6B = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +199,7 @@
 			children = (
 				FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */,
 				FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */,
+				FD0041982AC757BD00EE0444 /* STT */,
 				FD9290742A9E3AAE00A41A6B /* Component */,
 				FDECBD322AA4274A00EB0619 /* Market */,
 				FDD1F5DD2A9EB5510076469D /* Home */,
@@ -448,6 +462,7 @@
 				FD9290822A9E52FA00A41A6B /* UIScreen+.swift in Sources */,
 				FD30DCB42AB04349002A35C7 /* Order.swift in Sources */,
 				FD92906F2A9D50B500A41A6B /* Color+.swift in Sources */,
+				FD00419A2AC757E500EE0444 /* STTTestView.swift in Sources */,
 				FD30DCA62AB040E5002A35C7 /* MenuViewModel.swift in Sources */,
 				FD30DCB22AB04302002A35C7 /* User.swift in Sources */,
 				FDD1F5E22A9EB5B20076469D /* HomeView.swift in Sources */,
@@ -456,6 +471,7 @@
 				FDD1F5E42A9FCA150076469D /* MarketRowView.swift in Sources */,
 				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
 				FDD1F5EC2AA234440076469D /* Date+.swift in Sources */,
+				FD00419E2AC7820100EE0444 /* SpeechRecognizer.swift in Sources */,
 				FD0041932AC442CD00EE0444 /* APIManager.swift in Sources */,
 				FD0041952AC5E78600EE0444 /* LoginRouteView.swift in Sources */,
 				FDECBD342AA6FC5D00EB0619 /* MarketDetailView.swift in Sources */,
@@ -619,6 +635,8 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "MAKS에서 STT 기능 사용을 위한 마이크 권한을 요청합니다.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "MAKS에서 STT 사용 권한을 요청합니다. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -658,6 +676,8 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MAKS에서 사용자의 위치를 보여주기 위해 위치 권한을 받습니다. ";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "MAKS에서 STT 기능 사용을 위한 마이크 권한을 요청합니다.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "MAKS에서 STT 사용 권한을 요청합니다. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
