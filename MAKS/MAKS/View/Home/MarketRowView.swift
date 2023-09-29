@@ -8,20 +8,40 @@
 import SwiftUI
 
 struct MarketRowView: View {
-    let marketName: String = "크로플러버"
     let marketRate: Double = 4.9
-    let marketDescription: String = "줄 서서 먹는 크로플, 와플 맛집"
+    let marketImageName: String? = nil
+    
+    let market: Market
+    
+    var marketImage: Image {
+        guard let imageName = marketImageName else {
+            return Image.imagePlaceHolder
+        }
+        return Image(imageName)
+    }
     
     var marketRateUntilFirstDecimal: String {
         String(format: "%.1f", marketRate)
     }
     
+    let action: () -> (Void)
+    
     var body: some View {
+        Button {
+            action()
+        } label: {
+            label
+        }
+    }
+    
+    //MARK: - label
+    
+    private var label: some View {
         HStack(spacing: 12) {
-            Image("star")
+            marketImage
+                .resizable()
                 .frame(width: 93,
                        height: 93)
-                .background(Color.mkGray500)
                 .cornerRadius(12)
                 .padding(.top, 13)
                 .padding(.bottom, 14)
@@ -30,7 +50,7 @@ struct MarketRowView: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 8) {
-                    Text(marketName)
+                    Text(market.name)
                         .font(.system(size: 18,
                                       weight: .semibold))
                         .foregroundColor(.mkMainColor)
@@ -51,7 +71,7 @@ struct MarketRowView: View {
                 }
                 .padding(.bottom, 8)
                 
-                Text(marketDescription)
+                Text(market.description)
                     .font(.system(size: 12,
                                   weight: .light))
                     .foregroundColor(.mkGray500)
@@ -72,8 +92,4 @@ struct MarketRowView: View {
                 x: 0 ,
                 y: 1)
     }
-}
-
-extension String {
-    
 }
