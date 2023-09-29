@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SearchView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @State var searchText: String = ""
     @State var isPresentedSearchResultView: Bool = false
     
@@ -28,6 +30,8 @@ struct SearchView: View {
                 popularSearchSection
             }
             Spacer()
+            
+            .navigationBarBackButtonHidden(true)
         }
         .navigationDestination(isPresented: $isPresentedSearchResultView) {
             SearchResultView(searchText: $searchText)
@@ -40,10 +44,25 @@ struct SearchView: View {
     //MARK: - titleSection
     
     private var titleSection: some View {
-        Text("검색")
-            .font(.system(size: 24, weight: .bold))
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
+        HStack(spacing: 0) {
+            Button {
+                dismiss()
+            } label: {
+                Image("chevron.left")
+                    .renderingMode(.template)
+                    .foregroundColor(.mkMainColor)
+            }
+            .padding(.trailing, 126)
+            
+            
+            Text("검색")
+                .font(.system(size: 24, weight: .bold))
+            
+            Spacer()
+                
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 10)
     } // titleSection
     
     //MARK: - recentSearchSection
@@ -56,7 +75,9 @@ struct SearchView: View {
             
             HStack(spacing: 10) {
                 ForEach(0..<3) { _ in
-                    MKSearchChip(text: "크로플")
+                    MKSearchChip(text: "크로플") {
+                        searchText = "크로플"
+                    }
                 }
             }
             
@@ -76,40 +97,42 @@ struct SearchView: View {
             HStack(spacing: 40) {
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(0..<5) { index in
-                        HStack(spacing: 4) {
-                            Text("\(index + 1)")
-                            
-                            Text(" \(rankedFoodList[index])")
-                                .padding(.vertical, 10)
-                            
-                            Spacer()
-                        }
-                        .font(.system(size: 16, weight: .light))
-                        .onTapGesture {
+                        Button {
                             print("\(rankedFoodList[index])")
                             searchText.removeAll()
                             searchText = rankedFoodList[index]
+                        } label: {
+                            HStack(spacing: 4) {
+                                Text("\(index + 1)")
+                                
+                                Text(" \(rankedFoodList[index])")
+                                    .padding(.vertical, 10)
+                                
+                                Spacer()
+                            }
+                            .font(.system(size: 16, weight: .light))
                         }
+                        
                         
                     }
                 }
                 
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(5..<10) { index in
-                        HStack(spacing: 4) {
-                            Text("\(index + 1)")
-                                .font(.system(size: 16, weight: .light))
-                            
-                            Text(" \(rankedFoodList[index])")
-                                .font(.system(size: 16, weight: .light))
-                                .padding(.vertical, 10)
-                            
-                            Spacer()
-                        }
-                        .onTapGesture {
+                        Button {
                             print("\(rankedFoodList[index])")
                             searchText.removeAll()
                             searchText = rankedFoodList[index]
+                        } label: {
+                            HStack(spacing: 4) {
+                                Text("\(index + 1)")
+                                
+                                Text(" \(rankedFoodList[index])")
+                                    .padding(.vertical, 10)
+                                
+                                Spacer()
+                            }
+                            .font(.system(size: 16, weight: .light))
                         }
                     }
                 }
