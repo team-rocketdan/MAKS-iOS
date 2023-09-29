@@ -57,10 +57,15 @@ struct LoginView: View {
     private var sectionOfBrand: some View {
         VStack(alignment: .leading,
                spacing: 10) {
-            Text("MAKS.")
+            Text("MAKS")
                 .font(.system(size: 38,
                               weight: .black))
                 .foregroundColor(.white)
+            +
+            Text(".")
+                .font(.system(size: 38,
+                              weight: .black))
+                .foregroundColor(.mkPointColor)
             
             Text("내 손안의 키오스크")
                 .font(.system(size: 24,
