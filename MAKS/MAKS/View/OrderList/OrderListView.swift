@@ -19,9 +19,12 @@ struct OrderListView: View {
             ScrollView {
                 VStack(spacing: 30) {
                     ForEach(0..<10) { _ in
-                        OrderRowView()
-                            .padding(.horizontal, 20)
-                        
+                        Button {
+                            // navigate to detail view
+                        } label: {
+                            OrderRowView()
+                                .padding(.horizontal, 20)
+                        }
                     }
                 }
             }
