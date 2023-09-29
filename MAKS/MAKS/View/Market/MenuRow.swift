@@ -8,27 +8,36 @@
 import SwiftUI
 
 struct MenuRow: View {
-    let menuName: String = "플레인 크로플"
-    let menuDescription: String = "명불허전 크로플와플의 베스트 메뉴"
-    let menuPrice: Int = 4800
-    let menuImage: Image? = nil
+    let menu: Menu
+    
+    var menuImage: Image {
+        guard let image = menu.imageURL
+        else { return Image.imagePlaceHolder }
+        
+        return Image(image)
+    }
+    
+    let action: () -> (Void)
     
     var body: some View {
         VStack(alignment: .leading,
                spacing: 10) {
-            HStack(spacing: 20) {
-                // FIXME: 실제 상점 이미지로 교체
-                Image(systemName: "star")
-                    .resizable()
-                    .background(Color.mkGray500)
-                    .frame(width: 82,
-                           height: 82)
-                    .cornerRadius(8)
-                
-                menuInformationSection
-            }
-            .padding(.trailing, 20)
             
+            Button {
+                action()
+            } label: {
+                HStack(spacing: 20) {
+                    // FIXME: 실제 상점 이미지로 교체
+                    menuImage
+                        .resizable()
+                        .frame(width: 82,
+                               height: 82)
+                        .cornerRadius(8)
+                    
+                    menuInformationSection
+                }
+                .padding(.trailing, 20)
+            }
             
             Divider()
                 
@@ -43,18 +52,18 @@ struct MenuRow: View {
     private var menuInformationSection: some View {
         VStack(alignment: .leading,
                spacing: 0) {
-            Text(menuName)
+            Text(menu.name)
                 .font(.system(size: 18,
                               weight: .semibold))
                 .padding(.bottom, 6)
             
-            Text(menuDescription)
+            Text(menu.description)
                 .font(.system(size: 14,
                               weight: .light))
                 .foregroundColor(.mkGray500)
                 .padding(.bottom, 20)
             
-            Text("\(menuPrice)원")
+            Text("\(menu.price)원")
                 .font(.system(size: 16,
                               weight: .medium))
         }
