@@ -136,3 +136,12 @@ struct MKTabBar: View {
         }
     } // - myPageTabButton
 }
+
+//MARK: - Previews
+
+struct MKTabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        MKTabBar(selectedIndex: .constant(0))
+            .frame(height: 72)
+    }
+}

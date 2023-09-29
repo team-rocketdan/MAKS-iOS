@@ -14,9 +14,25 @@ struct ChevronRightButton: View {
         Button {
             action()
         } label: {
-            Image("chevron.right")
-                .renderingMode(.template)
-                .foregroundColor(.mkGray500)
+            label
+        }
+    }
+    
+    //MARK: - label
+    
+    var label: some View {
+        Image("chevron.right")
+            .renderingMode(.template)
+            .foregroundColor(.mkGray500)
+    }
+}
+
+//MARK: - Previews
+
+struct ChevronRightButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ChevronRightButton {
+            
         }
     }
 }

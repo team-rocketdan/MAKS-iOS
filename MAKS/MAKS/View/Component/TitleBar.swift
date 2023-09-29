@@ -27,3 +27,12 @@ struct TitleBar: View {
         .frame(width: UIScreen.screenWidth)
     }
 }
+
+//MARK: - Previews
+
+struct TitleBar_Previews: PreviewProvider {
+    static var previews: some View {
+        TitleBar()
+            .border(.black)
+    }
+}

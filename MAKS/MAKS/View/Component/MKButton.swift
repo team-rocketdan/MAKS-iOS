@@ -58,3 +58,18 @@ extension View {
         self.modifier(MKButtonViewModifier(style: style))
     }
 }
+
+//MARK: - Previews
+struct MKButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            MKButton(style: .plain) {
+                
+            } label: {
+                Text("장바구니로 바로가기")
+                    .frame(maxWidth: .infinity)
+            }
+            .padding(20)
+        }
+    }
+}

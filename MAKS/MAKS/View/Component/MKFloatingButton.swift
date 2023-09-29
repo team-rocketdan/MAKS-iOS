@@ -31,6 +31,11 @@ struct MKFloatingButton: View {
                 .background(buttonColor)
                 .cornerRadius(100)
         }
+    }
+}
 
+struct MKFloatingButton_Previews: PreviewProvider {
+    static var previews: some View {
+        MKFloatingButton {}
     }
 }
