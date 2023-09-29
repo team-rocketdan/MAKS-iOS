@@ -14,6 +14,9 @@ class UserViewModel: ObservableObject {
     
     func login() {
         self.isLogin = true
+        DispatchQueue.main.async {
+            self.currentUser = .defaultModel
+        }
     }
     
     func logout() {
