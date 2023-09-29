@@ -9,21 +9,30 @@ import SwiftUI
 
 struct MarketDetailView: View {
     @Environment(\.dismiss) var dismiss
-    let marketName: String = "크로플러버 용산점"
+    @EnvironmentObject var marketViewModel: MarketViewModel
+    @EnvironmentObject var menuViewModel: MenuViewModel
+    
+    let market: Market
+    
+    @State var isPresentedCartView: Bool = false
     
     var body: some View {
         VStack(alignment: .leading,
                spacing: 0) {
             titleSection
             
-            Image(systemName: "star")
+            Image.imagePlaceHolder
                 .resizable()
-                .background(Color.mkGray500)
                 .frame(width: UIScreen.screenWidth)
                 .frame(maxHeight: 285)
-                
+            
             menuSection
+            
+                .navigationBarBackButtonHidden(true)
         }
+               .navigationDestination(isPresented: $isPresentedCartView) {
+                   Text("cart view")
+               }
     }
     
     //MARK: - titleSection
@@ -31,12 +40,12 @@ struct MarketDetailView: View {
     private var titleSection: some View {
         HStack(spacing: 20) {
             Button {
-               dismiss()
+                dismiss()
             } label: {
                 Image("chevron.left")
             }
             
-            Text(marketName)
+            Text(market.name)
                 .font(.system(size: 24,
                               weight: .bold))
             
@@ -68,27 +77,25 @@ struct MarketDetailView: View {
             Divider()
             
             ScrollView {
-                ForEach(0..<10) { index in
-                    MenuRow()
+                ForEach(menuViewModel.menus, id: \.id) { menu in
+                    MenuRow(menu: menu) {
+                        // navigate to menu detail view OR add menu to cart
+                    }
                 }
             }
             
-           
+            
             MKButton(style: .plain) {
                 print("1")
             } label: {
-                HStack {
-                    Spacer()
-                    Text("장바구니 보기")
-                    Spacer()
-                }
+                Text("장바구니 보기")
+                    .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
             .padding(.vertical, 14)
             .padding(.horizontal, 20)
             
         }
-        .frame(width: UIScreen.screenWidth)
+               .frame(width: UIScreen.screenWidth)
     } // - menuSection
     
 }
