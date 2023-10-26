@@ -12,32 +12,62 @@ struct SearchView: View {
     
     @State var searchText: String = ""
     @State var isPresentedSearchResultView: Bool = false
+   
+//    @State var searchHistory: [String] = []
+    
+    @StateObject var searchHistoryClass = SearchHistory.shared
     
     let rankedFoodList = ["마라탕", "마라룽샤", "샌드위치",
                           "회", "돼지게티", "다이어트",
                           "라면","우유", "크로플", "와플"]
     
     var body: some View {
-        VStack(spacing: 0) {
-            titleSection
-            
-            VStack(alignment: .leading, spacing: 30) {
-                MKSearchBar(text: $searchText)
-                    .padding(.horizontal, 20)
+        ZStack {
+            VStack(spacing: 0) {
+                titleSection
                 
-                recentSearchSection
+                VStack(alignment: .leading, spacing: 30) {
+                    MKSearchBar(text: $searchText)
+                        .padding(.horizontal, 20)
+                    
+                    recentSearchSection
+                    
+                    popularSearchSection
+                }
+                Spacer()
                 
-                popularSearchSection
+                    .navigationBarBackButtonHidden(true)
             }
-            Spacer()
             
-            .navigationBarBackButtonHidden(true)
+            AISection()
+                .offset(y: 300)
         }
         .navigationDestination(isPresented: $isPresentedSearchResultView) {
             SearchResultView(searchText: $searchText)
         }
+        .onAppear {
+            // sync를 맞춤.
+            searchHistoryClass.searchHistory = searchHistoryClass.userDefaultsArray
+            // UserDefaultsDidChange 알림을 구독
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(SearchHistory.userDefaultsDidChange),
+                                                   name: UserDefaults.didChangeNotification,
+                                                   object: nil)
+        }
+        .onDisappear {
+            // NotificationCenter에서 알림 구독 해제
+            NotificationCenter.default.removeObserver(self,
+                                                      name: UserDefaults.didChangeNotification,
+                                                      object: nil)
+
+        }
+        .onChange(of: searchHistoryClass.userDefaultsArray) { newArray in
+            
+        }
         .onSubmit {
             isPresentedSearchResultView = true
+            addSearchHistory()
+            searchHistoryClass.setUserDefaultsWithSearchHistory()
         }
     }
     
@@ -74,9 +104,9 @@ struct SearchView: View {
                 .font(.system(size: 20, weight: .bold))
             
             HStack(spacing: 10) {
-                ForEach(0..<3) { _ in
-                    MKSearchChip(text: "크로플") {
-                        searchText = "크로플"
+                ForEach(searchHistoryClass.searchHistory, id: \.self) { history in
+                    MKSearchChip(text: history) {
+                        searchText = history
                     }
                 }
             }
@@ -141,4 +171,20 @@ struct SearchView: View {
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
     } // - popularSearchSection
+    
+    //MARK: - addSearchHistory
+    
+    func addSearchHistory() {
+        /// 빈 텍스트는 검색결과에 추가하지 않습니다. 
+        guard !searchText.isEmpty
+        else { return }
+        /// 이미 검색 결과에 있는 텍스트는 추가하지 않습니다.
+        guard !searchHistoryClass.searchHistory.contains(searchText)
+        else { return }
+        if searchHistoryClass.searchHistory.count > 10 {
+            searchHistoryClass.searchHistory.removeFirst()
+        }
+        searchHistoryClass.searchHistory.append(searchText)
+    }
 }
+

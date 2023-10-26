@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct OrderRowView: View {
-    let orderNumber: Int = 101
-    let orderDate: Date = .init()
+    @EnvironmentObject var menuViewModel: MenuViewModel
+    @EnvironmentObject var marketViewModel: MarketViewModel
     
-    let marketName: String = "크로플러버"
-    let orderMenu: String = "플레인 크로플 외 2개"
-    let orderTotal: Int = 8600
+    @State var market: Market = .defaultModel
+    let order: Order
     
-    let marketImageName: String? = nil
-    var marketImage: Image {
-        guard let imageName = marketImageName
-        else {
-            return Image("")
+    var menuLabel: String {
+        let keys = Array(menuViewModel.menuIDs.keys)
+        guard keys.count > 0
+        else { return "" }
+       
+        var result = "\(menuViewModel.menuIDs[keys[0], default: .defaultModel].name) "
+        if keys.count > 1 {
+            result += "외 \(keys.count - 1)개"
         }
-        return Image(imageName)
+        return result
     }
-    
-    let orderStatus: String = "조리 중"
     
     var body: some View {
         VStack(spacing: 0) {
@@ -49,6 +49,10 @@ struct OrderRowView: View {
                 radius: 4,
                 x: 0,
                 y: 1)
+        .onAppear {
+            fetchMenusInOrder()
+            getMarket()
+        }
 
     }
     
@@ -56,16 +60,21 @@ struct OrderRowView: View {
     
     private var orderNumberSection: some View {
         HStack(spacing: 0) {
-            Text("주문번호 \(orderNumber)번")
+            Text("주문번호 \(order.number)번")
                 .font(.system(size: 18, weight: .bold))
                 .foregroundColor(.mkMainColor)
             
             Spacer()
             
-            Text(orderDate.toStringUntilDay())
-                .font(.system(size: 14,
-                              weight: .medium))
-                .foregroundColor(.mkMainColor)
+            Text(Date().toStringUntilDay())
+                            .font(.system(size: 14,
+                                          weight: .medium))
+                            .foregroundColor(.mkMainColor)
+            
+//            Text(order.createdAt.toStringUntilDay())
+//                .font(.system(size: 14,
+//                              weight: .medium))
+//                .foregroundColor(.mkMainColor)
         }
         .padding(.top, 16)
         .padding(.bottom, 12)
@@ -77,15 +86,15 @@ struct OrderRowView: View {
     
     private var orderInformationSection: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(marketName)
+            Text(market.name)
                 .font(.system(size: 18,
                               weight: .semibold))
             
-            Text(orderMenu)
+            Text(menuLabel)
                 .font(.system(size: 14,
                               weight: .light))
             
-            Text("\(orderTotal)원")
+            Text("\(order.totalPrice)원")
                 .font(.system(size: 14,
                               weight: .medium))
         }
@@ -95,18 +104,42 @@ struct OrderRowView: View {
     //MARK: - marketImageSection
     
     private var marketImageSection: some View {
-        Text(orderStatus)
+        Text(order.status)
             .font(.system(size: 14, weight: .semibold))
             .foregroundColor(.white)
             .padding(.vertical, 26)
             .padding(.horizontal, 16)
             .background {
                 // FIXME: 실제 매장 이미지로 변경
-                marketImage
+                market.image
                     .resizable()
                     .frame(width: 69, height: 69)
             }
             .background(Color.mkGray200)
             .clipShape(Circle())
     } // - marketImageSection
+    
+    func fetchMenusInOrder() {
+        let menuIDs = Array(order.menus.keys)
+        
+        Task {
+            do {
+                for menuID in menuIDs {
+                    menuViewModel.menuIDs[menuID] = try await menuViewModel.getMenu(menuID: menuID)
+                }
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func getMarket() {
+        Task {
+            do {
+                self.market = try await marketViewModel.getMarket(marketID: order.marketID.uuidString)
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
 }

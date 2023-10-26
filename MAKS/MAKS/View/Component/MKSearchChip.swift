@@ -42,7 +42,12 @@ struct MKSearchChip: View {
     //MARK: - deleteSearchChip
     
     func deleteSearchChip() {
-        // have to fill
+        let searchHistoryClass = SearchHistory.shared
+        
+        guard let index = searchHistoryClass.searchHistory.firstIndex(of: text)
+        else { return }
+        searchHistoryClass.searchHistory.remove(at: index)
+        searchHistoryClass.setUserDefaultsWithSearchHistory()
     }
 }
 

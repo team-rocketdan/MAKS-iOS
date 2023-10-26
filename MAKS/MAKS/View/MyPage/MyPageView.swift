@@ -110,9 +110,7 @@ struct MyPageView: View {
                     // navigate to detail view
                 }
                 .background(Color.white)
-                .onTapGesture {
-                    print("tap navigation")
-                }
+                
                 Divider()
             }
         }

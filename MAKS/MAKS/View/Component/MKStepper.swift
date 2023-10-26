@@ -11,7 +11,7 @@ struct MKStepper: View {
     @Binding var count: Int
 
     var body: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 10) {
             Button {
                 subtractCount()
             } label: {
@@ -42,6 +42,8 @@ struct MKStepper: View {
     }
     
     private func subtractCount() {
+        guard self.count > 1
+        else { return }
         self.count -= 1
     }
 }
