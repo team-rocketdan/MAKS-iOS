@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TitleBar: View {
+    @Binding var isPresentedCartView: Bool
+    
     var body: some View {
         HStack {
             Text("MAKS")
@@ -21,10 +23,19 @@ struct TitleBar: View {
                 .foregroundColor(.mkPointColor)
             
             Spacer()
+            
+            Button {
+                isPresentedCartView = true
+            } label: {
+                Image("cart")
+            }
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
         .frame(width: UIScreen.screenWidth)
+        .navigationDestination(isPresented: $isPresentedCartView) {
+            CartView()
+        }
     }
 }
 
@@ -32,7 +43,7 @@ struct TitleBar: View {
 
 struct TitleBar_Previews: PreviewProvider {
     static var previews: some View {
-        TitleBar()
+        TitleBar(isPresentedCartView: .constant(false))
             .border(.black)
     }
 }
