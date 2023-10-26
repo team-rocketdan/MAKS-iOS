@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct OrderListView: View {
+    @EnvironmentObject var orderViewModel: OrderViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
         VStack {
             Text("주문내역")
@@ -18,17 +21,26 @@ struct OrderListView: View {
             
             ScrollView {
                 VStack(spacing: 30) {
-                    ForEach(0..<10) { _ in
+                    ForEach(orderViewModel.orderedList, id: \.id) { order in
                         Button {
                             // navigate to detail view
                         } label: {
-                            OrderRowView()
+                            OrderRowView(order: order)
                                 .padding(.horizontal, 20)
                         }
                     }
                 }
             }
             .padding(.top, 20)
+        }
+        .onAppear {
+            Task {
+                do {
+                    try await orderViewModel.fetchOrdersWithUserID(userID: userViewModel.currentUser?.id.uuidString ?? "2A13752F-92CC-4A31-9E11-4FAE61FCFC5D")
+                } catch {
+                    print("\(error.localizedDescription)")
+                }
+            }
         }
     }
 }
