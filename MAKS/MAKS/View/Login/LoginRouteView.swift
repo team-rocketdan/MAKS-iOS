@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginRouteView: View {
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var alertToastViewModel: AlertToastViewModel
     
     var body: some View {
         if userViewModel.isLogin {
