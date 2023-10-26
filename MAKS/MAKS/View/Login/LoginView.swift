@@ -7,10 +7,12 @@
 
 import SwiftUI
 import AuthenticationServices
+import AlertToast
 
 struct LoginView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var marketViewModel: MarketViewModel
+    @EnvironmentObject var alertToastViewModel: AlertToastViewModel
     
     var body: some View {
         VStack {
@@ -29,9 +31,13 @@ struct LoginView: View {
                 print("login with Apple")
                 Task {
                     do {
+                        alertToastViewModel.isProcessing = true
                         try await marketViewModel.fetchMarkets()
+                        alertToastViewModel.isProcessing = false
                         userViewModel.isLogin = true
                     } catch {
+                        alertToastViewModel.isProcessing = false
+                        alertToastViewModel.isError = true
                         print("\(error.localizedDescription)")
                     }
                 }
@@ -50,6 +56,13 @@ struct LoginView: View {
         }
         .frame(width: UIScreen.screenWidth)
         .background(Color.mkMainColor)
+        .disabled(alertToastViewModel.isProcessing)
+        .toast(isPresenting: $alertToastViewModel.isProcessing) {
+            AlertToast(displayMode: .alert, type: .loading)
+        }
+        .toast(isPresenting: $alertToastViewModel.isError) {
+            AlertToast(displayMode: .alert, type: .error(.red))
+        }
     }
     
     //MARK: - sectionOfBrand
