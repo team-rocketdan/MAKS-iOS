@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var navigationViewModel: NavigationViewModel
     @EnvironmentObject var marketViewModel: MarketViewModel
     @EnvironmentObject var menuViewModel: MenuViewModel
     
@@ -15,15 +16,16 @@ struct HomeView: View {
     
     @State var isPresentedSearchView: Bool = false
     @State var isPresentedDetailMarketView: Bool = false
+    @State var isPresentedCartView: Bool = false
     @State var selectedMarket: Market?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            TitleBar()
+            TitleBar(isPresentedCartView: $isPresentedCartView)
 
             Button {
                 // navigate to searchView
-                isPresentedSearchView = true
+                navigationViewModel.isPresentedSearchView = true
             } label: {
                 MKSearchBar(text: $text).label
                     .padding(.vertical, 10)
@@ -50,7 +52,7 @@ struct HomeView: View {
                             }
                         }
                         
-                        isPresentedDetailMarketView = true
+                        navigationViewModel.isPresentedMarketView = true
                     }
                     .padding(.top, 16)
                     .padding(.horizontal, 20)
@@ -58,13 +60,15 @@ struct HomeView: View {
             }
         }
         .frame(width: UIScreen.screenWidth)
-        .navigationDestination(isPresented: $isPresentedSearchView) {
+        .navigationDestination(isPresented: $navigationViewModel.isPresentedSearchView) {
             SearchView()
+                .environmentObject(navigationViewModel)
                 .environmentObject(marketViewModel)
                 .environmentObject(menuViewModel)
         }
-        .navigationDestination(isPresented: $isPresentedDetailMarketView) {
+        .navigationDestination(isPresented: $navigationViewModel.isPresentedMarketView) {
             MarketDetailView(market: selectedMarket ?? .defaultModel)
+                .environmentObject(navigationViewModel)
                 .environmentObject(marketViewModel)
                 .environmentObject(menuViewModel)
         }
