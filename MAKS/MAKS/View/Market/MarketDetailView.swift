@@ -11,28 +11,65 @@ struct MarketDetailView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var marketViewModel: MarketViewModel
     @EnvironmentObject var menuViewModel: MenuViewModel
+    @EnvironmentObject var navigationViewModel: NavigationViewModel
     
-    let market: Market
+    @State var market: Market = .defaultModel
     
     @State var isPresentedCartView: Bool = false
+    @State var isPresentedAlert: Bool = false
+    @State var selectedMenu: Menu?
     
     var body: some View {
-        VStack(alignment: .leading,
-               spacing: 0) {
-            titleSection
+        ZStack {
+            VStack(alignment: .leading,
+                   spacing: 0) {
+                titleSection
+                
+                market.image
+                    .resizable()
+                    .frame(width: UIScreen.screenWidth)
+                    .frame(maxHeight: 285)
+                
+                menuSection
+                
+                    .navigationBarBackButtonHidden(true)
+                
+                if !menuViewModel.menusInCart.isEmpty {
+                    MKButton(style: .plain) {
+                        navigationViewModel.isPresentedCartView = true
+                    } label: {
+                        Text("장바구니 보기")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .padding(.vertical, 14)
+                    .padding(.horizontal, 20)
+                }
+                
+            }
             
-            Image.imagePlaceHolder
-                .resizable()
-                .frame(width: UIScreen.screenWidth)
-                .frame(maxHeight: 285)
-            
-            menuSection
-            
-                .navigationBarBackButtonHidden(true)
+            AISection()
+                .offset(y: 250)
         }
-               .navigationDestination(isPresented: $isPresentedCartView) {
-                   Text("cart view")
-               }
+        .onAppear {
+            Task {
+                do {
+                    self.market = try await marketViewModel.getMarket(marketID: "24780C19-EFDA-4458-ACAA-1A3BF30AD1B9")
+                    
+                } catch {
+                    print("\(error.localizedDescription)")
+                }
+            }
+        }
+        .navigationDestination(isPresented: $navigationViewModel.isPresentedCartView) {
+            CartView()
+        }
+        .alert(isPresented: $isPresentedAlert) {
+            Alert(title: Text("장바구니에는 한 가게의 메뉴만 담을 수 있습니다. 장바구니를 비우시겠습니까?"),
+                  primaryButton: .cancel(),
+                  secondaryButton: .default(Text("확인")) {
+                removeAllInCartAndAddMenu()
+            })
+        }
     }
     
     //MARK: - titleSection
@@ -51,10 +88,8 @@ struct MarketDetailView: View {
             
             Spacer()
             
-            Button {
-                print("navigate to 장바구니")
-            } label: {
-                Image("cart")
+            CartButton(count: .constant(menuViewModel.totalCountInCart)) {
+                isPresentedCartView = true
             }
         }
         .padding(.top, 10)
@@ -80,24 +115,37 @@ struct MarketDetailView: View {
                 ForEach(menuViewModel.menus, id: \.id) { menu in
                     MenuRow(menu: menu) {
                         // navigate to menu detail view OR add menu to cart
+                        menuAddInCart(menu: menu)
                     }
                 }
             }
-            
-            
-            MKButton(style: .plain) {
-                print("1")
-            } label: {
-                Text("장바구니 보기")
-                    .frame(maxWidth: .infinity)
-            }
-            .padding(.vertical, 14)
-            .padding(.horizontal, 20)
-            
         }
-               .frame(width: UIScreen.screenWidth)
+        .frame(width: UIScreen.screenWidth)
     } // - menuSection
     
+    //MARK: - menuAddInCart
+
+    func menuAddInCart(menu: Menu) {
+        if !menuViewModel.menusInCart.isEmpty {
+            if let keyMenu = menuViewModel.menusInCart.keys.first {
+                if keyMenu.market.id != menu.market.id {
+                    selectedMenu = menu
+                    isPresentedAlert = true
+                    return
+                }
+            }
+        }
+        menuViewModel.menusInCart[menu, default: 0] += 1
+    }
+    
+    //MARK: - removeAllInCartAndAddMenu
+    
+    func removeAllInCartAndAddMenu() {
+        menuViewModel.menusInCart.removeAll()
+        guard let menu = selectedMenu
+        else { return }
+        menuViewModel.menusInCart[menu, default: 0] += 1
+    }
 }
 
 

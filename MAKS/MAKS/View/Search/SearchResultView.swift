@@ -16,26 +16,32 @@ struct SearchResultView: View {
     @State var isPresentedMarketDetailView: Bool = false
     
     var body: some View {
-        VStack {
-            
-            titleSection
-            
-            MKSearchBar(text: $searchText)
-                .padding(.bottom, 10)
-                .padding(.horizontal, 20)
-            
-            ScrollView {
-                ForEach(marketViewModel.markets, id: \.id) { market in
-                    MarketRowView(market: market) {
-                        isPresentedMarketDetailView = true
-                    }
+        ZStack {
+            VStack {
+                
+                titleSection
+                
+                MKSearchBar(text: $searchText)
+                    .padding(.bottom, 10)
+                    .padding(.horizontal, 20)
+                
+                ScrollView {
+                    ForEach(marketViewModel.markets, id: \.id) { market in
+                        MarketRowView(market: market) {
+                            isPresentedMarketDetailView = true
+                        }
                         .padding(.vertical, 10)
                         .padding(.horizontal, 20)
+                    }
+                    
                 }
-                
+                .navigationBarBackButtonHidden(true)
             }
-            .navigationBarBackButtonHidden(true)
+            
+            AISection()
+                .offset(y: 300)
         }
+        .background()
         .onAppear {
             Task {
 //                do {
