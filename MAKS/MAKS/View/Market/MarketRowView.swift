@@ -13,13 +13,6 @@ struct MarketRowView: View {
     
     let market: Market
     
-    var marketImage: Image {
-        guard let imageName = marketImageName else {
-            return Image.imagePlaceHolder
-        }
-        return Image(imageName)
-    }
-    
     var marketRateUntilFirstDecimal: String {
         String(format: "%.1f", marketRate)
     }
@@ -38,7 +31,7 @@ struct MarketRowView: View {
     
     private var label: some View {
         HStack(spacing: 12) {
-            marketImage
+            market.image
                 .resizable()
                 .frame(width: 93,
                        height: 93)
