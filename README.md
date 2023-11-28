@@ -21,7 +21,7 @@ iOS 16.0+
 
 ## 폴더 구조 
 ```sh
-├─ MAKS
+MAKS
 ├── Assets.xcassets
 ├── Constant
 ├── Extension
@@ -31,9 +31,6 @@ iOS 16.0+
 │   ├── String+.swift
 │   ├── UIImage+.swift
 │   └── UIScreen+.swift
-├── GoogleService-Info.plist
-├── Info.plist
-├── MAKS.entitlements
 ├── Model
 │   ├── GPTRequest.swift
 │   ├── GPTResponse.swift
@@ -47,6 +44,8 @@ iOS 16.0+
 │       └── Contents.json
 ├── UIConfig
 ├── View
+│   ├── MAKSApp.swift
+│   ├── MainRouteView.swift
 │   ├── AISection.swift
 │   ├── Component
 │   │   ├── AppleLoginButton.swift
@@ -74,8 +73,6 @@ iOS 16.0+
 │   │   └── NaverMapView.swift
 │   ├── Login
 │   │   └── LoginView.swift
-│   ├── MAKSApp.swift
-│   ├── MainRouteView.swift
 │   ├── Market
 │   │   ├── MarketDetailView.swift
 │   │   ├── MarketRowView.swift
@@ -129,7 +126,7 @@ iOS 16.0+
 ## 사용 프레임워크 & 라이브러리 
 ### UI
 - SwiftUI(mainly)
-- UIKit(partialy)
+- UIKit(partially)
 - AlertToast
   
 ### View Navigation
