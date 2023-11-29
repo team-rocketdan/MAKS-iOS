@@ -1,12 +1,12 @@
 # MAKS_iOS
 
 ## 지원 정보 
-iOS 16.0+
+iOS 16.0+<br>
 다크모드, 가로모드 미지원
 
 ## 설치 방법 
-1. .ipa 파일을 통한 설치
-2. github를 통한 설치
+1. .ipa 파일을 통한 설치는 Apple의 보안 정책 상 어렵습니다. 아래 제공된 링크를 통해 TestFlight를 사용하여 테스트를 진행하실 수 있습니다. 
+3. github를 통한 설치
 - GoogleServiceInfo.plist
 - Info.plist
 - Pods(Naver Map)<br>
