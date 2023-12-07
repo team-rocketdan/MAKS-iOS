@@ -1,23 +1,69 @@
 # MAKS_iOS
 
 ## 지원 정보 
-iOS 16.0+<br>
-다크모드, 가로모드 미지원
+- iOS 16.0+<br>
+- 다크모드, 가로모드 미지원
 
-## 설치 방법 
-1. .ipa 파일을 통한 설치는 Apple의 보안 정책 상 어렵습니다. 아래 제공된 링크를 통해 TestFlight를 사용하여 테스트를 진행하실 수 있습니다. 
-3. github를 통한 설치
+## 소스 코드 빌드 방법
+- **MacOS 환경에서만** 빌드가 가능합니다. (Windows에서는 빌드가 불가능하니 참고하여 주세요.)<br>
+1. 소스 코드를 로컬 컴퓨터에 다운로드 받습니다. 
+2. App Store에서 Xcode를 다운로드 받습니다.
+3. 아래 나열된 파일들을 Google Drive에서 다운로드 받습니다. (보안 상 민감한 정보가 포함되어 있어 커밋내역에 포함되지 않았습니다. 소스코드를 통한 빌드를 원하실 경우 hmheo128@gmail.com로 연락을 주시면 파일을 제공하여 드립니다.)
 - GoogleServiceInfo.plist
 - Info.plist
-- Pods(Naver Map)<br>
-위의 파일들은 보안을 위해 커밋 내역에 포함되지 않았습니다. 깃허브 소스코드를 통한 빌드를 원하실 경우 따로 연락을 주시어 요청하여 주시면 파일을 제공해드립니다.
-더불어 Naver Map을 사용하실 경우 CocoaPods를 통해 Naver Map Pods 파일을 다운로드 받으셔야 합니다.
+- Pods
+4. 다운로드 받은 파일들을 MAKS 폴더로 옮겨줍니다.
+
+
+## 테스트 방법 
+
+- Apple의 보안 정책 상 .ipa 파일을 통한 설치는 불가능합니다. 아래 제공된 링크를 통해 TestFlight를 사용하여 테스트를 진행하실 수 있습니다.
+- **iOS 16.0+에서만** 설치 및 실행이 가능합니다. 
+1. App Store에서 TestFlight를 다운로드 받습니다.
+2. 제공된 링크에 접속하여 MAKS.앱을 다운로드합니다. 
+
+ <details>
+    <summary>AlertToast</summary>
+    <div markdown="1">
+        MIT License
+    </div>
+</details>
+
+## 사용 기술 
+- SwiftUI(mainly)
+- UIKit(partially)
+- Apple Speech (Speech-To-Text)
+- AVFoundation (Text-To-Speech)
+  
+## 오픈소스 라이선스 
+
+### UI
+- AlertToast
+  
+### View Navigation
+- LinkNavigator
+  
+### RESTful API
+- Alamofire
+
+### Login
+- FirebaseSDK
+- KakaoSDK
+
+### Map
+- NaverMap
+
+### Speech-To-Text(STT)
+- Apple Speech 
+
+
 
 ## 아키텍처 
 - MVVM Pattern<br>
 ![image](https://github.com/team-rocketdan/MAKS-iOS/assets/97100404/7ea2be2c-f69a-490f-919a-2714a0566fb1)
 
 (출처: https://ko.wikipedia.org/wiki/%EB%AA%A8%EB%8D%B8-%EB%B7%B0-%EB%B7%B0%EB%AA%A8%EB%8D%B8)
+
 
 ## 폴더 구조 
 ```sh
@@ -121,29 +167,6 @@ MAKS
     └── ViewModelProtocol.swift
 
 ```
-
-
-## 사용 프레임워크 & 라이브러리 
-### UI
-- SwiftUI(mainly)
-- UIKit(partially)
-- AlertToast
-  
-### View Navigation
-- LinkNavigator
-  
-### RESTful API
-- Alamofire
-
-### Login
-- FirebaseSDK
-- KakaoSDK
-
-### Map
-- NaverMap
-
-### Speech-To-Text(STT)
-- Apple Speech 
 
 ## 트러블 슈팅
 - <a href="www.naver.com">LinkNavigator를 도입하며</a>
