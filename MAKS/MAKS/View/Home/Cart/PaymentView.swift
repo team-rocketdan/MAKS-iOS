@@ -7,13 +7,17 @@
 
 import SwiftUI
 import AlertToast
+import LinkNavigator
 
 struct PaymentView: View {
+    let navigator: LinkNavigatorType
+    
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var menuViewModel: MenuViewModel
     @EnvironmentObject var orderViewModel: OrderViewModel
     @EnvironmentObject var alertToastViewModel: AlertToastViewModel
     @EnvironmentObject var navigationViewModel: NavigationViewModel
+    @EnvironmentObject var sttRecognizer: SpeechRecognizer
     
     let paymentMethodStrings = ["신용카드 결제", "카카오페이", "네이버페이", "토스페이"]
     let paymentImageStrings = ["", "kakao", "naver", "toss"]
@@ -21,9 +25,7 @@ struct PaymentView: View {
     @State var isOnArray: [Bool] = [false, false, false, false]
     @State var isPresentedOrderCompleteView: Bool = false
     
-    let order: Order
-    let totalPayment: Int
-    
+    @State var order: Order = .defaultModel
     
     var body: some View {
         ZStack {
@@ -69,21 +71,37 @@ struct PaymentView: View {
                 .navigationBarBackButtonHidden(true)
             }
             
-            AISection()
+            AISection(navigator: navigator)
                 .offset(y: 250)
         }
-        .navigationDestination(isPresented: $isPresentedOrderCompleteView) {
-                   OrderCompleteView()
-                .environmentObject(alertToastViewModel)
-               }
+        .onAppear {
+            self.order = orderViewModel.cartOrder ?? .defaultModel
+        }
+//        .navigationDestination(isPresented: $isPresentedOrderCompleteView) {
+//                   OrderCompleteView()
+//                .environmentObject(alertToastViewModel)
+//               }
         .toast(isPresenting: $alertToastViewModel.isProcessing) {
             AlertToast(displayMode: .alert, type: .loading)
         }
-        .onChange(of: navigationViewModel.isOrder) { newValue in
-            guard newValue
+        .onChange(of: sttRecognizer.pay) { newValue in
+            guard !newValue.isEmpty
             else { return }
-            requestOrder()
+            if newValue.contains("네이버") {
+                selectRadioButton(index: 2)
+            } else if newValue.contains("신용") || newValue.contains("카드") {
+                selectRadioButton(index: 0)
+            } else if newValue.contains("토스") {
+                selectRadioButton(index: 3)
+            } else if newValue.contains("카카오") {
+                selectRadioButton(index: 1)
+            }
         }
+//        .onChange(of: navigationViewModel.isOrder) { newValue in
+//            guard newValue
+//            else { return }
+//            requestOrder()
+//        }
     }
     
     //MARK: - titleSection
@@ -137,7 +155,7 @@ struct PaymentView: View {
             
             Spacer()
             
-            Text("\(totalPayment)원")
+            Text("\(menuViewModel.totalPayment)원")
         }
         .font(.system(size: 18,
                       weight: .medium))
@@ -152,7 +170,7 @@ struct PaymentView: View {
             
             Spacer()
             
-            Text("\(totalPayment)원")
+            Text("\(menuViewModel.totalPayment)원")
         }
         .font(.system(size: 18,
                       weight: .bold))
@@ -174,7 +192,9 @@ struct PaymentView: View {
                 try await orderViewModel.registerOrder(order: self.order)
                 menuViewModel.menusInCart.removeAll()
                 alertToastViewModel.isProcessing = false
-                isPresentedOrderCompleteView = true
+                navigator.next(paths: [RouteMatchPath.orderComplete.rawValue],
+                               items: [:],
+                               isAnimated: true)
             } catch {
                 print("\(error.localizedDescription)")
             }
