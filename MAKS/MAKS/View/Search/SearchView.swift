@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct SearchView: View {
+    let navigator: LinkNavigatorType
+    
     @Environment(\.dismiss) var dismiss
     
     @State var searchText: String = ""
@@ -39,12 +42,12 @@ struct SearchView: View {
                     .navigationBarBackButtonHidden(true)
             }
             
-            AISection()
+            AISection(navigator: navigator)
                 .offset(y: 300)
         }
-        .navigationDestination(isPresented: $isPresentedSearchResultView) {
-            SearchResultView(searchText: $searchText)
-        }
+//        .navigationDestination(isPresented: $isPresentedSearchResultView) {
+//            SearchResultView(searchText: $searchText)
+//        }
         .onAppear {
             // sync를 맞춤.
             searchHistoryClass.searchHistory = searchHistoryClass.userDefaultsArray
@@ -65,7 +68,10 @@ struct SearchView: View {
             
         }
         .onSubmit {
-            isPresentedSearchResultView = true
+//            isPresentedSearchResultView = true
+            navigator.next(paths: [RouteMatchPath.searchResultView.rawValue],
+                           items: ["searchText" : searchText],
+                           isAnimated: true)
             addSearchHistory()
             searchHistoryClass.setUserDefaultsWithSearchHistory()
         }
