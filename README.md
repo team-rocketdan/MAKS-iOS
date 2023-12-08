@@ -72,7 +72,6 @@ TestFlight 베타테스터 링크: https://testflight.apple.com/join/37zPS6m9
     </div>
 </details>
 
-- KakaoSDK
  <details>
     <summary>Kakao iOS SDK (Apache-2.0) </summary>
     <div markdown="1">
