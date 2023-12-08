@@ -37,6 +37,7 @@ actor SpeechRecognizer: NSObject,
     @MainActor @Published var isActiveSTTService: Bool = false
     @MainActor @Published var transcript: String = ""
     @MainActor @Published var talkedText: String = ""
+    @MainActor @Published var pay: String = ""
     
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
