@@ -23,6 +23,14 @@ class MenuViewModel: ObservableObject {
         return menusInCart.values.reduce(0,+)
     }
     
+    var totalPayment: Int {
+        var result = 0
+        let menus = menusInCart.keys
+        for menu in menus {
+            result += menu.price * menusInCart[menu, default: 0]
+        }
+        return result
+    }
     //MARK: - fetchMenusInMarket
     
     /// marketID로 검색하는 query 메서드입니다. 
