@@ -4,20 +4,26 @@
 //
 //  Created by sole on 2023/08/29.
 //
-
+import LinkNavigator
 import SwiftUI
 import NMapsMap
 import FirebaseCore
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    var navigator: LinkNavigator {
+        LinkNavigator(dependency: AppDependency(),
+                      builders: AppRouterGroup().routers)
+    }
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        
+        
         NMFAuthManager.shared().clientId = Bundle.main.infoDictionary?["NMFClientID"] as? String ?? "unknown"
         FirebaseApp.configure()
         
-       return true
+        return true
     }
 }
 
@@ -27,6 +33,7 @@ struct MAKSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @StateObject var userViewModel: UserViewModel = .init()
+    //    @StateObject var navigationViewModel: NavigationViewModel = .init(navigator: )
     @StateObject var marketViewModel: MarketViewModel = .init()
     @StateObject var menuViewModel: MenuViewModel = .init()
     @StateObject var orderViewModel: OrderViewModel = .init()
@@ -34,11 +41,17 @@ struct MAKSApp: App {
     @StateObject var speechRecognizer: SpeechRecognizer = .init()
     @StateObject var chatGPTViewModel: ChatGPTViewModel = .init()
     @StateObject var alertToastViewModel: AlertToastViewModel = .init()
-    @StateObject var navigationViewModel: NavigationViewModel = .init()
+
+    
+    var navigator: LinkNavigator {
+        delegate.navigator
+    }
     
     var body: some Scene {
         WindowGroup {
-            LoginRouteView()
+            navigator
+                .launch(paths: ["login"],
+                        items: [:])
                 .accentColor(.mkMainColor)
                 .environmentObject(userViewModel)
                 .environmentObject(marketViewModel)
@@ -48,7 +61,6 @@ struct MAKSApp: App {
                 .environmentObject(chatGPTViewModel)
                 .environmentObject(textToSpeech)
                 .environmentObject(alertToastViewModel)
-                .environmentObject(navigationViewModel)
         }
     }
 }
