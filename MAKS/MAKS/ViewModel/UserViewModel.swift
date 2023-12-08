@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
-class UserViewModel: ObservableObject {
+class UserViewModel: ObservableObject {    
     let url: String = Bundle.main.infoDictionary?["ServerURL"] as? String ?? ""
     let apiManager = APIManager<User>()
     
@@ -25,7 +26,6 @@ class UserViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.currentUser = user
         }
-        self.isLogin = true
     }
     
     func logout() {
