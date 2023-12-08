@@ -7,14 +7,23 @@
 
 import SwiftUI
 import AlertToast
+import LinkNavigator
 
 struct MainRouteView: View {
+    let navigator: LinkNavigatorType
+    
+    @StateObject var navigationViewModel: NavigationViewModel 
+    
+    @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var tts: TextToSpeech
     @EnvironmentObject var sttRecognizer: SpeechRecognizer
     @EnvironmentObject var gpt: ChatGPTViewModel
     @EnvironmentObject var alertToastViewModel: AlertToastViewModel
-    @EnvironmentObject var navigationViewModel: NavigationViewModel
     @EnvironmentObject var menuViewModel: MenuViewModel
+    @EnvironmentObject var marketViewModel: MarketViewModel
+    @EnvironmentObject var orderViewModel: OrderViewModel
+    @EnvironmentObject var chatGPTViewModel: ChatGPTViewModel
+    
     
     @State var isPresentedCartView: Bool = false
     
@@ -31,48 +40,44 @@ struct MainRouteView: View {
     var focusedView: some View {
         switch focusedTab {
         case .home, .search:
-            return AnyView(HomeView())
+            return AnyView(HomeView(navigator: navigator))
         case .order:
-            return AnyView(OrderListView())
+            return AnyView(OrderListView(navigator: navigator))
         case .myPage:
-            return AnyView(MyPageView())
+            return AnyView(MyPageView(navigator: navigator))
         }
     }
     
     var body: some View {
         NavigationStack {
             ZStack {
-                    focusedView
-                        .padding(.bottom, 75)
+                focusedView
+                    .padding(.bottom, 75)
                 
                 // TabBar and Floating Button Section
                 VStack(spacing: 0) {
                     Spacer()
                     
-                    AISection()
+                    AISection(navigator: navigator)
                     
-                    MKTabBar(selectedIndex: $selectedIndex)
+                    MKTabBar(navigator: navigator,
+                             selectedIndex: $selectedIndex)
                         .ignoresSafeArea()
                         .frame(maxHeight: 72)
                 }
             }
-            //FIXME: navigation Stack을 모두 pop하는 방식으로 변경해야 함.
-            .navigationBarBackButtonHidden(true)
-            
-            //MARK: - navigationDestination(SearchView)
-            .navigationDestination(isPresented: $navigationViewModel.isPresentedSearchView) {
-                SearchView()
-                    .padding(.bottom, 75)
-                    .environmentObject(alertToastViewModel)
-                    .environmentObject(navigationViewModel)
-            }
-            //MARK: - navigationDestination(CartView)
-            .navigationDestination(isPresented: $navigationViewModel.isPresentedCartView) {
-                CartView()
-                    .environmentObject(alertToastViewModel)
-                    .environmentObject(navigationViewModel)
-            }
         }
+        .navigationBarHidden(true)
+        .environmentObject(userViewModel)
+        .environmentObject(marketViewModel)
+        .environmentObject(menuViewModel)
+        .environmentObject(orderViewModel)
+        .environmentObject(sttRecognizer)
+        .environmentObject(chatGPTViewModel)
+        .environmentObject(tts)
+        .environmentObject(alertToastViewModel)
+        .environmentObject(navigationViewModel)
+        .environmentObject(alertToastViewModel)
         .toast(isPresenting: $alertToastViewModel.isComplete) {
             AlertToast(displayMode: .alert, type: .complete(.green))
         }
