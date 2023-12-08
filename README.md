@@ -6,28 +6,31 @@
 
 ## 소스 코드 빌드 방법
 - **MacOS 환경에서만** 빌드가 가능합니다. (Windows에서는 빌드가 불가능하니 참고하여 주세요.)<br>
+- **MAKS.xcworkspace**에서만 빌드를 진행해주세요. MAKS.xcodeproj를 통해 빌드를 시도하면 에러가 발생합니다. **반드시 xworkspace에서 빌드를 진행해주세요.**
 1. 소스 코드를 로컬 컴퓨터에 다운로드 받습니다. 
 2. App Store에서 Xcode를 다운로드 받습니다.
 3. 아래 나열된 파일들을 Google Drive에서 다운로드 받습니다. (보안 상 민감한 정보가 포함되어 있어 커밋내역에 포함되지 않았습니다. 소스코드를 통한 빌드를 원하실 경우 hmheo128@gmail.com로 연락을 주시면 파일을 제공하여 드립니다.)
 - GoogleServiceInfo.plist
 - Info.plist
-- Pods
-4. 다운로드 받은 파일들을 MAKS 폴더로 옮겨줍니다.
+4. 다운로드 받은 파일들을  MAKS_iOS/MAKS/MAKS 폴더로 옮겨줍니다.<br>
+<img width="264" src="https://github.com/team-rocketdan/MAKS-iOS/assets/97100404/d5bf918f-12ba-43fa-b05c-65503434953a"> <br>
+5. Google Drive에서 Pods를 다운로드 받습니다. 이 폴더는 100MB 이상인 대용량 파일이라 커밋내역에 포함되지 않았습니다. 
+6. MAKS_iOS/MAKS/ 폴더로 이동합니다. MAKS.xcodeproj 파일이 있는 위치까지 이동하시면 됩니다. 그 위치에 방금 다운로드 받은 Pods 폴더를 위치시킵니다. <br>
+<img width="737" src="https://github.com/team-rocketdan/MAKS-iOS/assets/97100404/b22538a9-d355-4472-ae4e-136afe29383a"> <br>
+7. **MAKS.xcworkspace**를 더블 클릭합니다. (주의. MAKS.xcodeproj를 통해 빌드를 시도하면 에러가 발생합니다. **반드시 xworkspace에서 빌드를 진행해주세요.**)
+8. **Run** 버튼을 눌러 실행시키면 프로젝트가 빌드됩니다. 
 
 
 ## 테스트 방법 
 
-- Apple의 보안 정책 상 .ipa 파일을 통한 설치는 불가능합니다. 아래 제공된 링크를 통해 TestFlight를 사용하여 테스트를 진행하실 수 있습니다.
-- **iOS 16.0+에서만** 설치 및 실행이 가능합니다. 
+- Apple의 보안 정책 상 .ipa 파일을 통한 설치는 불가능합니다. 아래 제공된 링크를 통해 **TestFlight를 사용하여 테스트를 진행하실 수 있습니다.**
+- **iOS 16.0+에서만** 설치 및 실행이 가능합니다.
+TestFlight 베타테스터 링크: https://testflight.apple.com/join/37zPS6m9
 1. App Store에서 TestFlight를 다운로드 받습니다.
-2. 제공된 링크에 접속하여 MAKS.앱을 다운로드합니다. 
-
- <details>
-    <summary>AlertToast</summary>
-    <div markdown="1">
-        MIT License
-    </div>
-</details>
+2. 제공된 링크에 접속하여 MAKS.앱을 다운로드합니다.
+3. 테스트를 진행하시면 됩니다.
+참고로 테스트를 위해 로그인 과정을 생략할 수 있도록 설정했습니다. 테스트 계정이 별도로 제공되지 않는 이유입니다. 
+**Apple로 로그인하기**를 탭하시면 로딩 후 정상적으로 테스트를 진행하실 수 있습니다. (카카오로 로그인하기의 경우는 서버 데이터가 정상적으로 들어오지 않을 수 있습니다.)
 
 ## 사용 기술 
 - SwiftUI(mainly)
@@ -38,25 +41,55 @@
 ## 오픈소스 라이선스 
 
 ### UI
-- AlertToast
-  
-### View Navigation
-- LinkNavigator
+ <details>
+    <summary>AlertToast (MIT License) </summary>
+    <div markdown="1">
+        https://github.com/elai950/AlertToast
+    </div>
+</details>
   
 ### RESTful API
-- Alamofire
+ <details>
+    <summary>Alamofire (MIT License) </summary>
+    <div markdown="1">
+        https://github.com/Alamofire/Alamofire
+    </div>
+</details>
+  
+### View Navigation
+ <details>
+    <summary>LinkNavigator (MIT License) </summary>
+    <div markdown="1">
+    https://github.com/interactord/LinkNavigator
+    </div>
+</details>
 
 ### Login
-- FirebaseSDK
+ <details>
+    <summary>Firebase iOS SDK (Apache-2.0) </summary>
+    <div markdown="1">
+    https://github.com/firebase/firebase-ios-sdk
+    </div>
+</details>
+
 - KakaoSDK
+ <details>
+    <summary>Kakao iOS SDK (Apache-2.0) </summary>
+    <div markdown="1">
+     https://github.com/kakao/kakao-ios-sdk
+    </div>
+</details>
 
 ### Map
-- NaverMap
+ <details>
+    <summary>NaverMap (Apache-2.0) </summary>
+    <div markdown="1">
+     https://github.com/navermaps/ios-map-sdk
+    </div>
+</details>
 
-### Speech-To-Text(STT)
-- Apple Speech 
 
-
+---
 
 ## 아키텍처 
 - MVVM Pattern<br>
@@ -167,8 +200,4 @@ MAKS
     └── ViewModelProtocol.swift
 
 ```
-
-## 트러블 슈팅
-- <a href="www.naver.com">LinkNavigator를 도입하며</a>
-- <a href="www.naver.com">시리처럼 STT 구성해보기</a>
   
