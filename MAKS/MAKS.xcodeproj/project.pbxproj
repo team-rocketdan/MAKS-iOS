@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B1A5F152C69CD60BD60BFD54 /* Pods_MAKS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D474EEB403DE83F309F38AF5 /* Pods_MAKS.framework */; };
 		FD0041932AC442CD00EE0444 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041922AC442CD00EE0444 /* APIManager.swift */; };
-		FD0041952AC5E78600EE0444 /* LoginRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041942AC5E78600EE0444 /* LoginRouteView.swift */; };
 		FD0041972AC7239700EE0444 /* MKStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041962AC7239700EE0444 /* MKStepper.swift */; };
 		FD00419A2AC757E500EE0444 /* STTTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0041992AC757E500EE0444 /* STTTestView.swift */; };
 		FD00419E2AC7820100EE0444 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00419D2AC7820100EE0444 /* SpeechRecognizer.swift */; };
@@ -67,6 +66,7 @@
 		FD465B962AB92C6800827911 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FD465B952AB92C6800827911 /* KakaoSDKAuth */; };
 		FD465B982AB92C6800827911 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FD465B972AB92C6800827911 /* KakaoSDKUser */; };
 		FD465B9B2AB9307500827911 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = FD465B9A2AB9307500827911 /* SwiftyJSON */; };
+		FD5E7B092AF38499000416DD /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5E7B082AF38499000416DD /* MVIContainer.swift */; };
 		FD80FB362AE2078F00428DD4 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD80FB352AE2078F00428DD4 /* NavigationViewModel.swift */; };
 		FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */; };
 		FD9290602A9D1EEA00A41A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD92905F2A9D1EEA00A41A6B /* Assets.xcassets */; };
@@ -82,6 +82,18 @@
 		FD9290852A9E57EE00A41A6B /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */; };
 		FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9290872A9E5C6300A41A6B /* MyPageView.swift */; };
 		FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */; };
+		FDBD27C02B0285A400AAEDAC /* MainRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27BF2B0285A400AAEDAC /* MainRouteBuilder.swift */; };
+		FDBD27C22B0288B900AAEDAC /* RouteMatchPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27C12B0288B900AAEDAC /* RouteMatchPath.swift */; };
+		FDBD27C42B028C8900AAEDAC /* SearchRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27C32B028C8900AAEDAC /* SearchRouteBuilder.swift */; };
+		FDBD27C62B02A87F00AAEDAC /* CartRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27C52B02A87F00AAEDAC /* CartRouteBuilder.swift */; };
+		FDBD27CA2B02AAE800AAEDAC /* MarketDetailRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27C92B02AAE800AAEDAC /* MarketDetailRouteBuilder.swift */; };
+		FDBD27CC2B02AAF700AAEDAC /* SearchResultRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27CB2B02AAF700AAEDAC /* SearchResultRouteBuilder.swift */; };
+		FDBD27CE2B02AD8900AAEDAC /* PayRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27CD2B02AD8900AAEDAC /* PayRouteBuilder.swift */; };
+		FDBD27D02B02BCE200AAEDAC /* OrderCompleteRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD27CF2B02BCE200AAEDAC /* OrderCompleteRouteBuilder.swift */; };
+		FDBD5B002B025CE80094AC99 /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = FDBD5AFF2B025CE80094AC99 /* LinkNavigator */; };
+		FDBD5B032B025DE80094AC99 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD5B022B025DE80094AC99 /* AppDependency.swift */; };
+		FDBD5B052B025E4F0094AC99 /* AppRouterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD5B042B025E4F0094AC99 /* AppRouterGroup.swift */; };
+		FDBD5B092B0262290094AC99 /* LoginRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD5B082B0262290094AC99 /* LoginRouteBuilder.swift */; };
 		FDCBAAA62ACE429A00FDD15F /* ChatGPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCBAAA52ACE429A00FDD15F /* ChatGPTViewModel.swift */; };
 		FDD1F5DA2A9EA4BF0076469D /* MKTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5D92A9EA4BF0076469D /* MKTabBar.swift */; };
 		FDD1F5DC2A9EB05F0076469D /* MainRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */; };
@@ -114,7 +126,6 @@
 		B255A3C51C8FB7B79652B3A0 /* Pods-MAKS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAKS.release.xcconfig"; path = "Target Support Files/Pods-MAKS/Pods-MAKS.release.xcconfig"; sourceTree = "<group>"; };
 		D474EEB403DE83F309F38AF5 /* Pods_MAKS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAKS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD0041922AC442CD00EE0444 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		FD0041942AC5E78600EE0444 /* LoginRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouteView.swift; sourceTree = "<group>"; };
 		FD0041962AC7239700EE0444 /* MKStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKStepper.swift; sourceTree = "<group>"; };
 		FD0041992AC757E500EE0444 /* STTTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTTestView.swift; sourceTree = "<group>"; };
 		FD00419D2AC7820100EE0444 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
@@ -140,6 +151,7 @@
 		FD3C82F92ADCF2D800665BB7 /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 		FD436EBE2ABB2A4A003EEF29 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
 		FD436EC22ABD7BF5003EEF29 /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
+		FD5E7B082AF38499000416DD /* MVIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
 		FD80FB352AE2078F00428DD4 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		FD9290582A9D1EE900A41A6B /* MAKS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAKSApp.swift; sourceTree = "<group>"; };
@@ -157,6 +169,17 @@
 		FD9290842A9E57EE00A41A6B /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		FD9290872A9E5C6300A41A6B /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		FD92908B2A9E638F00A41A6B /* ChevronRightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightButton.swift; sourceTree = "<group>"; };
+		FDBD27BF2B0285A400AAEDAC /* MainRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouteBuilder.swift; sourceTree = "<group>"; };
+		FDBD27C12B0288B900AAEDAC /* RouteMatchPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMatchPath.swift; sourceTree = "<group>"; };
+		FDBD27C32B028C8900AAEDAC /* SearchRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouteBuilder.swift; sourceTree = "<group>"; };
+		FDBD27C52B02A87F00AAEDAC /* CartRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRouteBuilder.swift; sourceTree = "<group>"; };
+		FDBD27C92B02AAE800AAEDAC /* MarketDetailRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailRouteBuilder.swift; sourceTree = "<group>"; };
+		FDBD27CB2B02AAF700AAEDAC /* SearchResultRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRouteBuilder.swift; sourceTree = "<group>"; };
+		FDBD27CD2B02AD8900AAEDAC /* PayRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRouteBuilder.swift; sourceTree = "<group>"; };
+		FDBD27CF2B02BCE200AAEDAC /* OrderCompleteRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompleteRouteBuilder.swift; sourceTree = "<group>"; };
+		FDBD5B022B025DE80094AC99 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		FDBD5B042B025E4F0094AC99 /* AppRouterGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterGroup.swift; sourceTree = "<group>"; };
+		FDBD5B082B0262290094AC99 /* LoginRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouteBuilder.swift; sourceTree = "<group>"; };
 		FDCBAAA52ACE429A00FDD15F /* ChatGPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTViewModel.swift; sourceTree = "<group>"; };
 		FDD1F5D92A9EA4BF0076469D /* MKTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBar.swift; sourceTree = "<group>"; };
 		FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouteView.swift; sourceTree = "<group>"; };
@@ -200,6 +223,7 @@
 				FD3C1A042AE1129500A71953 /* FirebaseAuthCombine-Community in Frameworks */,
 				FD3C1A282AE1129500A71953 /* FirebaseStorage in Frameworks */,
 				FD3C1A122AE1129500A71953 /* FirebaseFirestoreSwift in Frameworks */,
+				FDBD5B002B025CE80094AC99 /* LinkNavigator in Frameworks */,
 				FD3C1A262AE1129500A71953 /* FirebaseRemoteConfigSwift in Frameworks */,
 				FD465B912AB92C0800827911 /* Alamofire in Frameworks */,
 				FD3C1A1A2AE1129500A71953 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
@@ -257,6 +281,14 @@
 			path = STT;
 			sourceTree = "<group>";
 		};
+		FD5E7B072AF38470000416DD /* MVIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				FD5E7B082AF38499000416DD /* MVIContainer.swift */,
+			);
+			path = MVIContainer;
+			sourceTree = "<group>";
+		};
 		FD92904F2A9D1EE900A41A6B = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +336,8 @@
 		FD9290692A9D504900A41A6B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FDBD5B012B025DD90094AC99 /* Navigator */,
+				FDBD27BE2B02858700AAEDAC /* RouteBuilder */,
 				FD92905B2A9D1EE900A41A6B /* MAKSApp.swift */,
 				FDD1F5DB2A9EB05F0076469D /* MainRouteView.swift */,
 				FD0F99F12AE0173400A71998 /* AISection.swift */,
@@ -323,6 +357,7 @@
 		FD92906A2A9D504F00A41A6B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FD5E7B072AF38470000416DD /* MVIContainer */,
 				FD0041922AC442CD00EE0444 /* APIManager.swift */,
 				FD30DCA52AB040E5002A35C7 /* MenuViewModel.swift */,
 				FD30DCA72AB040FD002A35C7 /* MarketViewModel.swift */,
@@ -382,7 +417,6 @@
 			isa = PBXGroup;
 			children = (
 				FD92907D2A9E4CC100A41A6B /* LoginView.swift */,
-				FD0041942AC5E78600EE0444 /* LoginRouteView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -415,6 +449,31 @@
 				FD9290872A9E5C6300A41A6B /* MyPageView.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		FDBD27BE2B02858700AAEDAC /* RouteBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				FDBD27C12B0288B900AAEDAC /* RouteMatchPath.swift */,
+				FDBD5B082B0262290094AC99 /* LoginRouteBuilder.swift */,
+				FDBD27BF2B0285A400AAEDAC /* MainRouteBuilder.swift */,
+				FDBD27C32B028C8900AAEDAC /* SearchRouteBuilder.swift */,
+				FDBD27C52B02A87F00AAEDAC /* CartRouteBuilder.swift */,
+				FDBD27CD2B02AD8900AAEDAC /* PayRouteBuilder.swift */,
+				FDBD27C92B02AAE800AAEDAC /* MarketDetailRouteBuilder.swift */,
+				FDBD27CB2B02AAF700AAEDAC /* SearchResultRouteBuilder.swift */,
+				FDBD27CF2B02BCE200AAEDAC /* OrderCompleteRouteBuilder.swift */,
+			);
+			path = RouteBuilder;
+			sourceTree = "<group>";
+		};
+		FDBD5B012B025DD90094AC99 /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				FDBD5B022B025DE80094AC99 /* AppDependency.swift */,
+				FDBD5B042B025E4F0094AC99 /* AppRouterGroup.swift */,
+			);
+			path = Navigator;
 			sourceTree = "<group>";
 		};
 		FDD1F5DD2A9EB5510076469D /* Home */ = {
@@ -527,6 +586,7 @@
 				FD3C1A252AE1129500A71953 /* FirebaseRemoteConfigSwift */,
 				FD3C1A272AE1129500A71953 /* FirebaseStorage */,
 				FD3C1A292AE1129500A71953 /* FirebaseStorageCombine-Community */,
+				FDBD5AFF2B025CE80094AC99 /* LinkNavigator */,
 			);
 			productName = MAKS;
 			productReference = FD9290582A9D1EE900A41A6B /* MAKS.app */;
@@ -563,6 +623,7 @@
 				FD465B992AB9307500827911 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				FD3C19EF2AE1110900A71953 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				FD3C19F42AE1129500A71953 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FDBD5AFE2B025CE80094AC99 /* XCRemoteSwiftPackageReference "LinkNavigator" */,
 			);
 			productRefGroup = FD9290592A9D1EE900A41A6B /* Products */;
 			projectDirPath = "";
@@ -647,20 +708,23 @@
 				FDE396BC2ACAFDE600343410 /* SectionDivider.swift in Sources */,
 				FD0F99ED2AE00A0500A71998 /* STTChatBubble.swift in Sources */,
 				FD3C19F32AE1122200A71953 /* FirebaseManager.swift in Sources */,
+				FDBD27D02B02BCE200AAEDAC /* OrderCompleteRouteBuilder.swift in Sources */,
 				FDD1F5E22A9EB5B20076469D /* HomeView.swift in Sources */,
 				FD9290762A9E3ACB00A41A6B /* MKButton.swift in Sources */,
 				FDECBD362AA7248000EB0619 /* MenuRow.swift in Sources */,
 				FDD1F5E42A9FCA150076469D /* MarketRowView.swift in Sources */,
 				FD92907A2A9E461F00A41A6B /* MKSearchChip.swift in Sources */,
 				FDD1F5EC2AA234440076469D /* Date+.swift in Sources */,
+				FDBD27CC2B02AAF700AAEDAC /* SearchResultRouteBuilder.swift in Sources */,
 				FD00419E2AC7820100EE0444 /* SpeechRecognizer.swift in Sources */,
 				FD0041932AC442CD00EE0444 /* APIManager.swift in Sources */,
-				FD0041952AC5E78600EE0444 /* LoginRouteView.swift in Sources */,
 				FD3C82FA2ADCF2D800665BB7 /* SearchHistory.swift in Sources */,
 				FDECBD342AA6FC5D00EB0619 /* MarketDetailView.swift in Sources */,
+				FDBD27CE2B02AD8900AAEDAC /* PayRouteBuilder.swift in Sources */,
 				FD2259182ACEB0A900506C8F /* Message.swift in Sources */,
 				FDD247962AC826DA00C12593 /* STTTalkedTextBubble.swift in Sources */,
 				FD3C1A322AE1A71300A71953 /* UIImage+.swift in Sources */,
+				FDBD5B092B0262290094AC99 /* LoginRouteBuilder.swift in Sources */,
 				FDD247CC2AC85A9A00C12593 /* String+.swift in Sources */,
 				FD9290782A9E421A00A41A6B /* MKSearchBar.swift in Sources */,
 				FD9290882A9E5C6300A41A6B /* MyPageView.swift in Sources */,
@@ -678,8 +742,12 @@
 				FD0F99F22AE0173400A71998 /* AISection.swift in Sources */,
 				FD92907E2A9E4CC100A41A6B /* LoginView.swift in Sources */,
 				FDD1F5DC2A9EB05F0076469D /* MainRouteView.swift in Sources */,
+				FDBD27CA2B02AAE800AAEDAC /* MarketDetailRouteBuilder.swift in Sources */,
 				FD80FB362AE2078F00428DD4 /* NavigationViewModel.swift in Sources */,
+				FDBD5B032B025DE80094AC99 /* AppDependency.swift in Sources */,
+				FDBD27C02B0285A400AAEDAC /* MainRouteBuilder.swift in Sources */,
 				FDD1F5F02AA253190076469D /* SearchResultView.swift in Sources */,
+				FDBD27C62B02A87F00AAEDAC /* CartRouteBuilder.swift in Sources */,
 				FDF3D0B52AD9178A00EBAEB9 /* TextToSpeech.swift in Sources */,
 				FD92908C2A9E638F00A41A6B /* ChevronRightButton.swift in Sources */,
 				FD92905C2A9D1EE900A41A6B /* MAKSApp.swift in Sources */,
@@ -687,14 +755,18 @@
 				FDE396C32ACB0D9700343410 /* CartButton.swift in Sources */,
 				FDE396BA2ACAF90E00343410 /* RadioButton.swift in Sources */,
 				FD30DCB62AB044EC002A35C7 /* ViewModelProtocol.swift in Sources */,
+				FDBD27C42B028C8900AAEDAC /* SearchRouteBuilder.swift in Sources */,
 				FD0041972AC7239700EE0444 /* MKStepper.swift in Sources */,
 				FDD247942AC81C5200C12593 /* MKSendButton.swift in Sources */,
 				FDE396BE2ACB043800343410 /* RequestTextField.swift in Sources */,
 				FD30DCAA2AB04129002A35C7 /* UserViewModel.swift in Sources */,
 				FD436EC32ABD7BF5003EEF29 /* Image+.swift in Sources */,
 				FDCBAAA62ACE429A00FDD15F /* ChatGPTViewModel.swift in Sources */,
+				FD5E7B092AF38499000416DD /* MVIContainer.swift in Sources */,
 				FDD1F5EA2AA233CC0076469D /* OrderRowView.swift in Sources */,
+				FDBD27C22B0288B900AAEDAC /* RouteMatchPath.swift in Sources */,
 				FD30DCB02AB042C8002A35C7 /* Market.swift in Sources */,
+				FDBD5B052B025E4F0094AC99 /* AppRouterGroup.swift in Sources */,
 				FD22591A2ACEB0E200506C8F /* GPTRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -962,6 +1034,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		FDBD5AFE2B025CE80094AC99 /* XCRemoteSwiftPackageReference "LinkNavigator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/interactord/LinkNavigator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1129,6 +1209,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FD465B992AB9307500827911 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		FDBD5AFF2B025CE80094AC99 /* LinkNavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDBD5AFE2B025CE80094AC99 /* XCRemoteSwiftPackageReference "LinkNavigator" */;
+			productName = LinkNavigator;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
