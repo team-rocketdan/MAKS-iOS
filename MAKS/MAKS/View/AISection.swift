@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct AISection: View {
+    let navigator: LinkNavigatorType
+    
     @EnvironmentObject var sttRecognizer: SpeechRecognizer
     @EnvironmentObject var gpt: ChatGPTViewModel
     @EnvironmentObject var tts: TextToSpeech
@@ -69,11 +72,8 @@ struct AISection: View {
             
             /// 3초 이상 묵음이면 자동으로 gpt에 request를 전송합니다.
             resetTimer()
-            //                requestGPTService(message: sttRecognizer.talkedText)
         }
         .onChange(of: tts.delegate.isActive) { newValue in
-            //FIXME: 자동으로 request 보낼 시 isActive 변경이 제대로 적용되지 않는 현상
-            print("isActiveTTS", newValue)
             guard !newValue
             else { return }
             
@@ -85,9 +85,7 @@ struct AISection: View {
             guard !newValue.isEmpty
             else { return }
             
-            guard newValue.contains("로이")
-                    || newValue.contains("루이")
-                    || newValue.contains("마크")
+            guard newValue.contains("마크")
             else {
                 /// 300자 이상이면 flush 합니다.
                 if newValue.count > 300 {
@@ -102,10 +100,10 @@ struct AISection: View {
         }
         //MARK: - onChange(gpt.response)
         .onChange(of: gpt.response) { newValue in
-            guard !gpt.response.isEmpty
+            //FIXME: 동일한 명령어 입력시 입력을 감지하지 못하는 문제
+            guard !newValue.isEmpty
             else { return }
-            
-            gpt.parsedText = commandGPT()
+            gpt.parsedText = commandGPT(response: newValue)
             
             guard !gpt.parsedText.isEmpty
             else { return }
@@ -122,12 +120,14 @@ struct AISection: View {
     /// 응답에 따라 뷰를 조작합니다.
     ///
     ///
-    func commandGPT() -> String {
-        let parsedText = gpt.response.split(separator: "#")
-        print(parsedText)
+    func commandGPT(response: String) -> String {
+        let parsedText = response.split(separator: "#")
         
         guard parsedText.count > 0
-        else { return "" }
+        else {
+//            gpt.response.removeAll()
+            return ""
+        }
         
         let command = parsedText[0]
         
@@ -139,13 +139,29 @@ struct AISection: View {
             }
             
             if parsedText[1].contains("장바구니") {
-                navigationViewModel.isPresentedCartView = true
+                navigator.replace(paths: [RouteMatchPath.loginView.rawValue,
+                                          RouteMatchPath.mainRouterView.rawValue,
+                                          RouteMatchPath.cartView.rawValue],
+                                  items: [:],
+                                  isAnimated: true)
             }
-            else if parsedText[1].contains("결제") {
-                navigationViewModel.isPresentedPaymentView = true
+            else if parsedText[1].contains("검색") {
+                navigator.replace(paths: [RouteMatchPath.loginView.rawValue,
+                                          RouteMatchPath.mainRouterView.rawValue,
+                                          RouteMatchPath.searchView.rawValue],
+                                  items: [:],
+                                  isAnimated: true)
             }
             else if parsedText[1].contains("가게") || parsedText[1].contains("햄버거") {
-                navigationViewModel.isPresentedMarketView = true
+                navigator.next(paths: [RouteMatchPath.marketDetailView.rawValue],
+                               items: ["marketID": Market.defaultModel.id.uuidString], isAnimated: true)
+            }
+            else if parsedText[1].contains("결제") {
+                navigator.replace(paths: [RouteMatchPath.loginView.rawValue,
+                                          RouteMatchPath.mainRouterView.rawValue,
+                                          RouteMatchPath.orderComplete.rawValue],
+                                  items: [:],
+                                  isAnimated: true)
             }
             
         case "Move":
@@ -153,19 +169,49 @@ struct AISection: View {
             else {
                 break
             }
-            if parsedText[1].contains("가게") {
-                navigationViewModel.isPresentedCartView = true
+            if parsedText[1].contains("장바구니") {
+                navigator.replace(paths: [RouteMatchPath.loginView.rawValue,
+                                          RouteMatchPath.mainRouterView.rawValue,
+                                          RouteMatchPath.cartView.rawValue],
+                                  items: [:],
+                                  isAnimated: true)
             }
             else if parsedText[1].contains("결제") {
-                navigationViewModel.isPresentedPaymentView = true
+                navigator.replace(paths: [RouteMatchPath.loginView.rawValue,
+                                          RouteMatchPath.mainRouterView.rawValue,
+                                          RouteMatchPath.orderComplete.rawValue],
+                                  items: [:],
+                                  isAnimated: true)
             }
             else if parsedText[1].contains("가게") || parsedText[1].contains("햄버거") {
-                navigationViewModel.isPresentedMarketView = true
+                navigator.next(paths: [RouteMatchPath.marketDetailView.rawValue],
+                               items: ["marketID": Market.defaultModel.id.uuidString], isAnimated: true)
             }
         case "Order":
-            navigationViewModel.isPresentedPaymentView = true
+            navigator.next(paths: [RouteMatchPath.payView.rawValue],
+                           items: ["marketID": Market.defaultModel.id.uuidString], isAnimated: true)
         case "Pay":
-            navigationViewModel.isOrder = true
+            guard parsedText.count > 1
+            else {
+                break
+            }
+            
+            if parsedText[1].contains("네이버") {
+                sttRecognizer.pay = "네이버"
+            } else if parsedText[1].contains("토스") {
+                sttRecognizer.pay = "토스"
+            } else if parsedText[1].contains("신용") ||  parsedText[1].contains("카드"){
+                sttRecognizer.pay = "신용"
+            } else if parsedText[1].contains("카카오") {
+                sttRecognizer.pay = "카카오"
+            }
+            
+            navigator.replace(paths: [RouteMatchPath.loginView.rawValue,
+                                      RouteMatchPath.mainRouterView.rawValue,
+                                      RouteMatchPath.orderComplete.rawValue],
+                                    items: [:],
+                                    isAnimated: true)
+            
         case "Error":
             break
         case "Customer":
@@ -173,14 +219,13 @@ struct AISection: View {
         case "Question":
             break
         case "Add":
-            
             guard parsedText.count > 1
             else {
                 break
             }
             
             if parsedText[1].contains("치즈") || parsedText[1].contains("버거") {
-                guard let menu = menuViewModel.menuIDs["24780C19-EFDA-4458-ACAA-1A3BF30AD1B9"]
+                guard let menu = menuViewModel.menuIDs["A9169F66-9732-438D-BF2D-CB98EC9DFB6B"]
                 else { break }
                 menuViewModel.menusInCart[menu, default: 0] += 1
             } else if parsedText[1].contains("콜라") {
@@ -192,9 +237,12 @@ struct AISection: View {
                     else { break }
                     menuViewModel.menusInCart[menu, default: 0] += 1
                 }
+        case "Off":
+            sttRecognizer.isActiveSTTService = false
         default:
             print("unknown command")
         }
+//        gpt.response.removeAll()
         return String(parsedText.last!)
     }
     
@@ -215,11 +263,13 @@ struct AISection: View {
         guard !sttRecognizer.talkedText.isEmpty
         else { return }
         let request = GPTRequest(model: GPTRequest.modelName,
-                                 messages: [.init(role: "user",
+                                 messages: [GPTRequest.systemMessage,
+                                            .init(role: "user",
                                                   content: sttRecognizer.talkedText)])
         /// 텍스트를 보낸 뒤 flush 합니다.
-        sttRecognizer.talkedText.removeAll()
-        
+//        sttRecognizer.talkedText.removeAll()
+        sttRecognizer.resetTranscript()
+        sttRecognizer.startTranscribing()
         Task {
             do {
                 let response = try await gpt.post(req: request)
@@ -238,10 +288,12 @@ struct AISection: View {
         // 입력이 없으면 3초 뒤 타이머를 끕니다.
         self.sttTimer = Timer.scheduledTimer(withTimeInterval: 3.0,
                                              repeats: false) { timer in
-            timer.invalidate()
-            /// STT 서비스를 종료합니다.
-            sttRecognizer.isActiveSTTService = false
             requestGPTService()
+            sttRecognizer.talkedText.removeAll()
+            timer.invalidate()
+//            /// STT 서비스를 종료합니다.
+//            sttRecognizer.isActiveSTTService = false
+  
         }
     }
     
@@ -250,11 +302,4 @@ struct AISection: View {
         self.sttTimer?.invalidate()
         self.startTimer()
     }
-}
-
-#Preview {
-    AISection()
-        .environmentObject(SpeechRecognizer())
-        .environmentObject(ChatGPTViewModel())
-        .environmentObject(TextToSpeech())
 }
