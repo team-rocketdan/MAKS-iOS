@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct OrderListView: View {
+    let navigator: LinkNavigatorType
+    
     @EnvironmentObject var orderViewModel: OrderViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     
@@ -24,6 +27,9 @@ struct OrderListView: View {
                     ForEach(orderViewModel.orderedList, id: \.id) { order in
                         Button {
                             // navigate to detail view
+                            navigator.next(paths: [],
+                                           items: [:],
+                                           isAnimated: true)
                         } label: {
                             OrderRowView(order: order)
                                 .padding(.horizontal, 20)
