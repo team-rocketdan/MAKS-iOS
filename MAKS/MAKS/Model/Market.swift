@@ -41,7 +41,7 @@ struct Market: Codable {
         return coordinate[1]
     }
     
-    static let defaultModel: Market = .init(id: .init(),
+    static let defaultModel: Market = .init(id: UUID(uuidString: "24780C19-EFDA-4458-ACAA-1A3BF30AD1B9") ?? .init(),
                                             name: "크로플Love",
                                             coverImage: nil,
                                             coordinate: [],
