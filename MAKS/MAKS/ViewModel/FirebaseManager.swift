@@ -17,17 +17,17 @@ struct FirebaseManager {
     func uploadImage(image: UIImage) async throws -> String {
         guard let imageData = image.pngData()
         else {
-            throw FirebaseError.notFound
+            throw FirebaseError.notFound("파일을 찾을 수 없습니다.")
         }
         let (metadata, error) = await putData(data: imageData)
         
         guard error == nil
         else {
-            throw FirebaseError.failToUpload
+            throw FirebaseError.failToUpload("이미지 업로드에 실패했습니다.")
         }
         guard let url = metadata?.path
         else {
-            throw FirebaseError.failToUpload
+            throw FirebaseError.failToUpload("이미지 업로드에 실패했습니다.")
         }
         
         return url
@@ -41,7 +41,7 @@ struct FirebaseManager {
         guard let data,
                 let image = UIImage(data: data)
         else {
-            throw fatalError("Data를 Image로 변환하지 못했습니다. 다시 시도하세요.")
+            throw FirebaseError.cannotConvert("이미지 변환에 실패했습니다!")
         }
         
         return image
@@ -68,7 +68,8 @@ extension FirebaseManager {
 }
 
 enum FirebaseError: Error {
-    case notFound
-    case failToUpload
-    case unknown
+    case notFound(_ message: String?)
+    case failToUpload(_ message: String?)
+    case unknown(_ message: String?)
+    case cannotConvert(_ message: String?)
 }
