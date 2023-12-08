@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct MarketDetailView: View {
+    let navigator: LinkNavigatorType
+    let marketID: String
+    
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var marketViewModel: MarketViewModel
     @EnvironmentObject var menuViewModel: MenuViewModel
@@ -18,6 +22,7 @@ struct MarketDetailView: View {
     @State var isPresentedCartView: Bool = false
     @State var isPresentedAlert: Bool = false
     @State var selectedMenu: Menu?
+    @State var downloadImage: Image = .imagePlaceHolder
     
     var body: some View {
         ZStack {
@@ -25,7 +30,7 @@ struct MarketDetailView: View {
                    spacing: 0) {
                 titleSection
                 
-                market.image
+                downloadImage
                     .resizable()
                     .frame(width: UIScreen.screenWidth)
                     .frame(maxHeight: 285)
@@ -36,7 +41,10 @@ struct MarketDetailView: View {
                 
                 if !menuViewModel.menusInCart.isEmpty {
                     MKButton(style: .plain) {
-                        navigationViewModel.isPresentedCartView = true
+//                        navigationViewModel.isPresentedCartView = true
+                        navigator.next(paths: [RouteMatchPath.cartView.rawValue],
+                                       items: [:],
+                                       isAnimated: true)
                     } label: {
                         Text("장바구니 보기")
                             .frame(maxWidth: .infinity)
@@ -47,22 +55,22 @@ struct MarketDetailView: View {
                 
             }
             
-            AISection()
+            AISection(navigator: navigator)
                 .offset(y: 250)
         }
         .onAppear {
             Task {
                 do {
-                    self.market = try await marketViewModel.getMarket(marketID: "24780C19-EFDA-4458-ACAA-1A3BF30AD1B9")
-                    
+                    self.market = try await marketViewModel.getMarket(marketID: marketID)
+                    updateImage()
                 } catch {
                     print("\(error.localizedDescription)")
                 }
             }
         }
-        .navigationDestination(isPresented: $navigationViewModel.isPresentedCartView) {
-            CartView()
-        }
+//        .navigationDestination(isPresented: $navigationViewModel.isPresentedCartView) {
+//            CartView()
+//        }
         .alert(isPresented: $isPresentedAlert) {
             Alert(title: Text("장바구니에는 한 가게의 메뉴만 담을 수 있습니다. 장바구니를 비우시겠습니까?"),
                   primaryButton: .cancel(),
@@ -145,6 +153,18 @@ struct MarketDetailView: View {
         guard let menu = selectedMenu
         else { return }
         menuViewModel.menusInCart[menu, default: 0] += 1
+    }
+    
+    func updateImage() {
+        guard let url = market.coverImage
+        else { return }
+        Task {
+            do {
+                self.downloadImage = try await FirebaseManager().downloadImage(path: url).convertToImage()
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
     }
 }
 
