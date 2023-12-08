@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 enum OrderStatus: String {
     case prepare = "준비 중"
@@ -32,4 +33,30 @@ struct Order: Codable {
                                            isTakeOut: false,
                                            status: OrderStatus.done.rawValue,
                                            number: 101)
+}
+
+extension Order {
+    func toDictionary() throws -> [String : String] {
+//        let json = try JSONEncoder().encode(self)
+//        let decodedData = try JSONDecoder().decode([String:String].self, from: json)
+        var result: [String : String] = [:]
+        result["id"] = self.id.uuidString
+        result["userID"] = self.userID.uuidString
+        result["marketID"] = self.marketID.uuidString
+        result["menus"] = "\(self.menus)"
+        result["totalPrice"] = "\(self.totalPrice)"
+        result["isTakeOut"] = "\(self.isTakeOut)"
+        result["status"] = "\(self.status)"
+        result["number"] = "\(self.number)"
+        
+        return result
+    }
+}
+
+func dictionaryToOrder(dict: [String: String]) throws -> Order {
+    let json = try JSONEncoder().encode(dict)
+    let decoder = JSONDecoder()
+    
+    let order = try decodeJSON(data: json, type: Order.self)
+    return order
 }
