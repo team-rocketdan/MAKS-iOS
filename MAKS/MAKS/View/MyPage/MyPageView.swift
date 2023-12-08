@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct MyPageView: View {
+    let navigator: LinkNavigatorType
+    
     @EnvironmentObject var userViewModel: UserViewModel
     
     let textPadding: CGFloat  = 15
-    // FIXME: user data로 수정해야 함. 
-    let name: String = "마크"
-    let email: String = "mark@gmail.com"
+    
     private var version: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
     }
@@ -137,8 +138,9 @@ struct MyPageView: View {
             Spacer()
             
             Button {
-                print("logout")
-                userViewModel.isLogin = false
+                navigator.replace(paths: [RouteMatchPath.loginView.rawValue],
+                                  items: [:],
+                                  isAnimated: true)
             } label: {
                 Text("로그아웃")
                     .underline()
