@@ -1,0 +1,23 @@
+//
+//  OrderCompleteRouteBuilder.swift
+//  MAKS
+//
+//  Created by sole on 11/14/23.
+//
+
+import SwiftUI
+import LinkNavigator
+
+struct OrderCompleteRouteBuilder: RouteBuilder {
+    var matchPath: String { RouteMatchPath.orderComplete.rawValue }
+    
+    var build: (LinkNavigatorType,
+                [String : String],
+                DependencyType) -> MatchingViewController? {
+        { navigator, items, dependency in
+            return WrappingController(matchPath: matchPath) {
+                OrderCompleteView(navigator: navigator)
+            }
+        }
+    }
+}
