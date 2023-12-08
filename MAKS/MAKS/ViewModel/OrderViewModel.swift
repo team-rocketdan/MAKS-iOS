@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class OrderViewModel: ObservableObject {
     let url: String = Bundle.main.infoDictionary?["ServerURL"] as? String ?? ""
@@ -17,7 +18,6 @@ class OrderViewModel: ObservableObject {
     //MARK: - fetchOrdersWithUserID
     func fetchOrdersWithUserID(userID: String) async throws {
         let orders = try await apiManager.fetch("\(url)/orders/user/\(userID)")
-        print(orders)
         DispatchQueue.main.async {
             self.orderedList = orders
         }
@@ -27,7 +27,6 @@ class OrderViewModel: ObservableObject {
     
     func registerOrder(order: Order) async throws -> Data {
         let result = try await apiManager.post("\(url)/order", data: order)
-        print(order)
         return result
     }
 }
