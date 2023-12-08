@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct CartView: View {
+    let navigator: LinkNavigatorType
+    
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var marketViewModel: MarketViewModel
     @EnvironmentObject var menuViewModel: MenuViewModel
@@ -65,15 +68,8 @@ struct CartView: View {
                 
             }
             
-            AISection()
+            AISection(navigator: navigator)
                 .offset(y: 250)
-        }
-        .navigationDestination(isPresented: $navigationViewModel.isPresentedPaymentView) {
-            PaymentView(order: order ?? .defaultModel, totalPayment: totalPayment)
-                .environmentObject(menuViewModel)
-                .environmentObject(orderViewModel)
-                .environmentObject(alertToastViewModel)
-                .environmentObject(navigationViewModel)
         }
         .onAppear {
             /// 장바구니가 비어있는 경우 실행을 중단합니다.
@@ -135,11 +131,16 @@ struct CartView: View {
                                   marketID: market.id,
                                   menus: menuViewModel.toIDDictionary(),
                                   totalPrice: totalPayment,
+//                                  createdAt: .init(),
                                   isTakeOut: false,
                                   status: "확인 중",
                                   number: 101)
                 self.order = order
-                navigationViewModel.isPresentedPaymentView = true
+                orderViewModel.cartOrder = order
+                navigator.next(paths: [RouteMatchPath.payView.rawValue],
+                               items: [:],
+                               isAnimated: true)
+
             } label: {
                 Text("주문하기")
                     .frame(maxWidth: .infinity)
@@ -247,8 +248,4 @@ struct CartView: View {
     func deleteMenuInCart(menu: Menu) {
         menuViewModel.menusInCart.removeValue(forKey: menu)
     }
-}
-
-#Preview {
-    CartView()
 }
