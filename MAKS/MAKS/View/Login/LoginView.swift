@@ -4,13 +4,24 @@
 //
 //  Created by sole on 2023/08/30.
 //
-
 import SwiftUI
 import AuthenticationServices
+import AlertToast
+import LinkNavigator
 
 struct LoginView: View {
+    let navigator: LinkNavigatorType
+    
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var marketViewModel: MarketViewModel
+    @EnvironmentObject var alertToastViewModel: AlertToastViewModel
+    @EnvironmentObject var navigationViewModel: NavigationViewModel
+    @EnvironmentObject var tts: TextToSpeech
+    @EnvironmentObject var sttRecognizer: SpeechRecognizer
+    @EnvironmentObject var gpt: ChatGPTViewModel
+    @EnvironmentObject var menuViewModel: MenuViewModel
+    @EnvironmentObject var orderViewModel: OrderViewModel
+    @EnvironmentObject var chatGPTViewModel: ChatGPTViewModel
     
     var body: some View {
         VStack {
@@ -26,16 +37,23 @@ struct LoginView: View {
             Spacer()
             
             AppleLoginButton{
-                print("login with Apple")
                 Task {
                     do {
+                        alertToastViewModel.isProcessing = true
                         try await marketViewModel.fetchMarkets()
-                        userViewModel.isLogin = true
+                        alertToastViewModel.isProcessing = false
+                        // view navigation to MainRouterView
+                        try await userViewModel.login()
+                        self.navigator.next(paths: [RouteMatchPath.mainRouterView.rawValue],
+                                            items: ["userID": "\(userViewModel.currentUser?.id.uuidString ?? "")"],
+                                       isAnimated: true)
+                        
                     } catch {
+                        alertToastViewModel.isProcessing = false
+                        alertToastViewModel.isError = true
                         print("\(error.localizedDescription)")
                     }
                 }
-                
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
@@ -48,8 +66,17 @@ struct LoginView: View {
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
         }
+        .navigationBarHidden(true)
         .frame(width: UIScreen.screenWidth)
+        .ignoresSafeArea()
         .background(Color.mkMainColor)
+        .disabled(alertToastViewModel.isProcessing)
+        .toast(isPresenting: $alertToastViewModel.isProcessing) {
+            AlertToast(displayMode: .alert, type: .loading)
+        }
+        .toast(isPresenting: $alertToastViewModel.isError) {
+            AlertToast(displayMode: .alert, type: .error(.red))
+        }
     }
     
     //MARK: - sectionOfBrand

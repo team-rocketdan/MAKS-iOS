@@ -44,37 +44,48 @@ struct APIManager<T: Codable>: APIRequest {
     }
     
     //MARK: - post
-    
+    /// 데이터를 db에 등록할 때 사용하는 메서드입니다.
     func post(_ url: String,
-              data: T) async throws -> Result<Data, Error> {
+              data: T) async throws -> Data {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .prettyPrinted
         let encodedData = try jsonEncoder.encode(data)
         
-        var request = URLRequest(url: URL(string: url) ?? .applicationDirectory)
+        var request = URLRequest(url: URL(string: url) ?? .homeDirectory)
         request.method = .post
+        
         request.httpBody = encodedData
         request.setValue("application/json",
                          forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
         
         let serializedData = AF.request(request).serializingData()
         let response = await serializedData.response
+        
         switch response.result {
-        case .success(let data):
-            return .success(data)
+        case .success(let responseData):
+            return responseData
         case .failure(let error):
-            return .failure(error)
+            /// response body가 empty인 경우 예외처리입니다. 
+            let statusCode = response.response?.statusCode
+            guard statusCode != 200,
+                  statusCode != 204,
+                  statusCode != 205
+            else {
+                return Data()
+            }
+            throw error
         }
     }
     
     //MARK: - delete
-    
+    /// 데이터를 db에서 삭제할 때 사용하는 메서드입니다.
     func delete() async throws {
         
     }
     
     //MARK: - update
-    
+    /// 데이터를 db에서 수정할 때 사용하는 메서드입니다. 
     func update() async throws {
         
     }
@@ -99,7 +110,7 @@ protocol APIRequest {
     associatedtype T
     func get(_ url: String) async throws -> T
     func fetch(_ url: String) async throws -> [T]
-    func post(_ url: String, data: T) async throws -> Result<Data, Error>
+    func post(_ url: String, data: T) async throws -> Data
     func delete() async throws
     func update() async throws
 }

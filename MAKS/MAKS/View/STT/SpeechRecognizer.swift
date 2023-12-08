@@ -11,7 +11,9 @@ import Speech
 import SwiftUI
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
-actor SpeechRecognizer: ObservableObject {
+actor SpeechRecognizer: NSObject,
+                        ObservableObject,
+                        SFSpeechRecognizerDelegate {
     enum RecognizerError: Error {
         case nilRecognizer
         case notAuthorizedToRecognize
@@ -20,26 +22,35 @@ actor SpeechRecognizer: ObservableObject {
         
         var message: String {
             switch self {
-            case .nilRecognizer: return "Can't initialize speech recognizer"
-            case .notAuthorizedToRecognize: return "Not authorized to recognize speech"
-            case .notPermittedToRecord: return "Not permitted to record audio"
-            case .recognizerIsUnavailable: return "Recognizer is unavailable"
+            case .nilRecognizer: 
+                return "Can't initialize speech recognizer"
+            case .notAuthorizedToRecognize: 
+                return "Not authorized to recognize speech"
+            case .notPermittedToRecord: 
+                return "Not permitted to record audio"
+            case .recognizerIsUnavailable: 
+                return "Recognizer is unavailable"
             }
         }
     }
     
-    @MainActor var transcript: String = ""
+    @MainActor @Published var isActiveSTTService: Bool = false
+    @MainActor @Published var transcript: String = ""
+    @MainActor @Published var talkedText: String = ""
+    @MainActor @Published var pay: String = ""
     
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
-    private let recognizer: SFSpeechRecognizer?
+    private var recognizer: SFSpeechRecognizer?
     
     /**
      Initializes a new speech recognizer. If this is the first time you've used the class, it
      requests access to the speech recognizer and the microphone.
      */
-    init() {
+    override init() {
+        super.init()
+        recognizer?.delegate = self
         recognizer = SFSpeechRecognizer(locale: .init(identifier: "ko-KR"))
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)
@@ -60,6 +71,7 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
     
+    
     @MainActor func startTranscribing() {
         Task {
             await transcribe()
@@ -78,6 +90,7 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
     
+    //MARK: - transcribe
     /**
      Begin transcribing audio.
      
@@ -85,7 +98,9 @@ actor SpeechRecognizer: ObservableObject {
      The resulting transcription is continuously written to the published `transcript` property.
      */
     private func transcribe() {
-        guard let recognizer, recognizer.isAvailable else {
+        guard let recognizer,
+              recognizer.isAvailable
+        else {
             self.transcribe(RecognizerError.recognizerIsUnavailable)
             return
         }
@@ -106,6 +121,7 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
     
+    //MARK: - reset
     /// Reset the speech recognizer.
     private func reset() {
         task?.cancel()
@@ -114,6 +130,8 @@ actor SpeechRecognizer: ObservableObject {
         request = nil
         task = nil
     }
+    
+    //MARK: - prepareEngine
     
     private static func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
         let audioEngine = AVAudioEngine()
@@ -140,12 +158,13 @@ actor SpeechRecognizer: ObservableObject {
         return (audioEngine, request)
     }
     
+    //MARK: - recognitionHandler
+    
     nonisolated private func recognitionHandler(audioEngine: AVAudioEngine,
                                                 result: SFSpeechRecognitionResult?,
                                                 error: Error?) {
         let receivedFinalResult = result?.isFinal ?? false
         let receivedError = error != nil
-        
         if receivedFinalResult || receivedError {
             audioEngine.stop()
             audioEngine.inputNode.removeTap(onBus: 0)
@@ -156,12 +175,23 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
     
+    //MARK: - transcribe(Success)
     
     nonisolated private func transcribe(_ message: String) {
         Task { @MainActor in
-            transcript = message
+            guard isActiveSTTService
+            else {
+                /// 로이라고 부르기 전까지 쌓는 텍스트입니다.
+                transcript = message
+                return
+            }
+            /// 로이라고 부른 후 쌓는 텍스트입니다. 
+            talkedText = message
         }
     }
+    
+    //MARK: - transcribe(Error)
+    
     nonisolated private func transcribe(_ error: Error) {
         var errorMessage = ""
         if let error = error as? RecognizerError {
@@ -174,6 +204,8 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
 }
+
+//MARK: - extensions
 
 extension SFSpeechRecognizer {
     static func hasAuthorizationToRecognize() async -> Bool {

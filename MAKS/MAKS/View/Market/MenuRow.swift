@@ -10,14 +10,15 @@ import SwiftUI
 struct MenuRow: View {
     let menu: Menu
     
-    var menuImage: Image {
-        guard let image = menu.imageURL
-        else { return Image.imagePlaceHolder }
-        
-        return Image(image)
-    }
-    
     let action: () -> (Void)
+    
+    @State var downloadImage: Image?
+    
+    var menuImage: Image {
+        guard let downloadImage
+        else { return .imagePlaceHolder }
+        return downloadImage
+    }
     
     var body: some View {
         VStack(alignment: .leading,
@@ -27,7 +28,6 @@ struct MenuRow: View {
                 action()
             } label: {
                 HStack(spacing: 20) {
-                    // FIXME: 실제 상점 이미지로 교체
                     menuImage
                         .resizable()
                         .frame(width: 82,
@@ -44,6 +44,9 @@ struct MenuRow: View {
         }
         .padding(.top, 10)
         .padding(.leading, 20)
+        .onAppear {
+            updateImage()
+        }
         
     }
     
@@ -68,4 +71,18 @@ struct MenuRow: View {
                               weight: .medium))
         }
     } // - menuInformationSection
+    
+    //MARK: - updateImage
+    
+    func updateImage() {
+        guard let url = menu.imageURL
+        else { return }
+        Task {
+            do {
+                self.downloadImage = try await FirebaseManager().downloadImage(path: url).convertToImage()
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
 }

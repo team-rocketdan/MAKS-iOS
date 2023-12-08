@@ -13,18 +13,12 @@ struct MarketRowView: View {
     
     let market: Market
     
-    var marketImage: Image {
-        guard let imageName = marketImageName else {
-            return Image.imagePlaceHolder
-        }
-        return Image(imageName)
-    }
-    
     var marketRateUntilFirstDecimal: String {
         String(format: "%.1f", marketRate)
     }
     
     let action: () -> (Void)
+    @State var downloadImage: Image = .imagePlaceHolder
     
     var body: some View {
         Button {
@@ -38,7 +32,7 @@ struct MarketRowView: View {
     
     private var label: some View {
         HStack(spacing: 12) {
-            marketImage
+            downloadImage
                 .resizable()
                 .frame(width: 93,
                        height: 93)
@@ -91,5 +85,20 @@ struct MarketRowView: View {
                 radius: 8,
                 x: 0 ,
                 y: 1)
+        .onAppear {
+            updateImage()
+        }
+    }
+    
+    func updateImage() {
+        guard let url = market.coverImage
+        else { return }
+        Task {
+            do {
+                self.downloadImage = try await FirebaseManager().downloadImage(path: url).convertToImage()
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
     }
 }

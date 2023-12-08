@@ -52,7 +52,7 @@ xcuserdata/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode
-GoogleService-Info.plsit
+GoogleService-Info.plist
 Info.plist
 MAKS/MAKS/MAKS.entitlements
 

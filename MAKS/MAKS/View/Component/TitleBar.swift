@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct TitleBar: View {
+    let navigator: LinkNavigatorType
+    
     var body: some View {
         HStack {
             Text("MAKS")
@@ -21,18 +24,21 @@ struct TitleBar: View {
                 .foregroundColor(.mkPointColor)
             
             Spacer()
+            
+            Button {
+//                isPresentedCartView = true
+                navigator.next(paths: [RouteMatchPath.cartView.rawValue],
+                               items: [:],
+                               isAnimated: true)
+            } label: {
+                Image("cart")
+            }
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
         .frame(width: UIScreen.screenWidth)
-    }
-}
-
-//MARK: - Previews
-
-struct TitleBar_Previews: PreviewProvider {
-    static var previews: some View {
-        TitleBar()
-            .border(.black)
+//        .navigationDestination(isPresented: $isPresentedCartView) {
+//            CartView()
+//        }
     }
 }
