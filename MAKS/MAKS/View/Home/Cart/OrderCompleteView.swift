@@ -7,16 +7,20 @@
 
 import SwiftUI
 import AlertToast
+import LinkNavigator
 
-//FIXME: dismiss시 naviagation에 쌓인 stack을 모두 pop하도록 수정
+
 struct OrderCompleteView: View {
+    let navigator: LinkNavigatorType
+    
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var alertToastViewModel: AlertToastViewModel
     @EnvironmentObject var navigationViewModel: NavigationViewModel
+    @EnvironmentObject var orderViewModel: OrderViewModel
     
-    @State var isPresentedMainRouteView: Bool = false
-    
-    let orderNumber: Int = 101
+    var orderNumber: Int {
+        orderViewModel.cartOrder?.number ?? 100
+    }
     
     var body: some View {
         VStack(alignment: .leading,
@@ -41,8 +45,9 @@ struct OrderCompleteView: View {
             Spacer()
             
             MKButton(style: .plain) {
-//                dismiss()
-                navigationViewModel.isPresentedMainRouteView = true
+                navigator.backOrNext(path: RouteMatchPath.mainRouterView.rawValue,
+                                     items: [:],
+                                     isAnimated: true)
             } label: {
                 Text("확인")
                     .frame(maxWidth: .infinity)
@@ -51,9 +56,8 @@ struct OrderCompleteView: View {
             .navigationBarBackButtonHidden(true)
         }
         .padding(.horizontal, 20)
-        .navigationDestination(isPresented: $navigationViewModel.isPresentedMainRouteView) {
-            MainRouteView()
-                .environmentObject(alertToastViewModel)
+        .onDisappear {
+            orderViewModel.cartOrder = nil
         }
     }
     
@@ -68,8 +72,9 @@ struct OrderCompleteView: View {
                               weight: .bold))
             
             Button {
-//                dismiss()
-                isPresentedMainRouteView = true
+                navigator.backOrNext(path: RouteMatchPath.mainRouterView.rawValue,
+                                     items: [:],
+                                     isAnimated: true)
             } label: {
                 Image("close")
             }
@@ -96,11 +101,4 @@ struct OrderCompleteView: View {
         .cornerRadius(8)
         
     }
-}
-
-
-//MARK: - Previews
-
-#Preview {
-    OrderCompleteView()
 }
