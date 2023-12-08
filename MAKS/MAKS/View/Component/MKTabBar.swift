@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 /// TabBar selectedIndex에 따라 선택된 뷰를 표시하기 위한 열거형입니다.
 enum TabBarIndex: Int {
@@ -16,6 +17,7 @@ enum TabBarIndex: Int {
 }
 
 struct MKTabBar: View {
+    let navigator: LinkNavigatorType
     
     @Binding var selectedIndex: Int
     
@@ -55,6 +57,9 @@ struct MKTabBar: View {
         Button {
             // navigate to homeTab
             selectedIndex = TabBarIndex.home.rawValue
+//            navigator.replace(paths: ["login", "main"],
+//                              items: [:],
+//                              isAnimated: true)
         } label: {
             VStack {
                 Image("home.fill")
@@ -77,6 +82,9 @@ struct MKTabBar: View {
         Button {
             // navigate to searchTab
             selectedIndex = TabBarIndex.search.rawValue
+            navigator.next(paths: [RouteMatchPath.searchView.rawValue],
+                                items: [:],
+                                isAnimated: true)
         } label: {
             VStack {
                 Image("search.fill")
@@ -135,13 +143,4 @@ struct MKTabBar: View {
             }
         }
     } // - myPageTabButton
-}
-
-//MARK: - Previews
-
-struct MKTabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        MKTabBar(selectedIndex: .constant(0))
-            .frame(height: 72)
-    }
 }
