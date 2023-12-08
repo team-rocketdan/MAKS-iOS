@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct TitleBar: View {
-    @Binding var isPresentedCartView: Bool
+    let navigator: LinkNavigatorType
     
     var body: some View {
         HStack {
@@ -25,7 +26,10 @@ struct TitleBar: View {
             Spacer()
             
             Button {
-                isPresentedCartView = true
+//                isPresentedCartView = true
+                navigator.next(paths: [RouteMatchPath.cartView.rawValue],
+                               items: [:],
+                               isAnimated: true)
             } label: {
                 Image("cart")
             }
@@ -33,17 +37,8 @@ struct TitleBar: View {
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
         .frame(width: UIScreen.screenWidth)
-        .navigationDestination(isPresented: $isPresentedCartView) {
-            CartView()
-        }
-    }
-}
-
-//MARK: - Previews
-
-struct TitleBar_Previews: PreviewProvider {
-    static var previews: some View {
-        TitleBar(isPresentedCartView: .constant(false))
-            .border(.black)
+//        .navigationDestination(isPresented: $isPresentedCartView) {
+//            CartView()
+//        }
     }
 }
